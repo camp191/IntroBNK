@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Create RootView
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.makeKeyAndVisible()
-    
     let layout = UICollectionViewFlowLayout()
     let mainViewController = MainViewController(collectionViewLayout: layout)
     layout.minimumLineSpacing = 28
@@ -26,12 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // NavigationBar Style
     UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    UINavigationBar.appearance().tintColor = .white
     UINavigationBar.appearance().barTintColor = UIColor(red: 199/225, green: 151/225, blue: 193/255, alpha: 0.9)
     UINavigationBar.appearance().isTranslucent = false
     
     // StatusbarStyle
     UIApplication.shared.statusBarStyle = .lightContent
     UIApplication.shared.isStatusBarHidden = false
+    
     return true
   }
 

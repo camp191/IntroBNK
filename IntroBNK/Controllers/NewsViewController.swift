@@ -11,7 +11,9 @@ import UIKit
 class NewsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    collectionView?.backgroundColor = .white
+    navigationItem.title = "News"
   }
-  
-  
+
 }

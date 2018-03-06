@@ -11,5 +11,9 @@ import UIKit
 class MVViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    collectionView?.backgroundColor = .white
+    navigationItem.title = "Music Videos"
   }
+  
 }

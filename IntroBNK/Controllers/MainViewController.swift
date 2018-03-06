@@ -20,11 +20,11 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     collectionView?.register(MainCell.self, forCellWithReuseIdentifier: mainCellIdentifier)
     navigationItem.title = "BNK48"
   }
+  
 }
 
 extension MainViewController {
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
     switch indexPath.row {
     case 0:
       let layout = UICollectionViewFlowLayout()
@@ -63,5 +63,6 @@ extension MainViewController {
     
     return cell
   }
+  
 }
 
