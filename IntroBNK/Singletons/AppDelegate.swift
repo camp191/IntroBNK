@@ -15,7 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    // Create RootView
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.makeKeyAndVisible()
+    
+    let layout = UICollectionViewFlowLayout()
+    let mainViewController = MainViewController(collectionViewLayout: layout)
+    layout.minimumLineSpacing = 28
+    window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+    
+    // NavigationBar Style
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    UINavigationBar.appearance().barTintColor = UIColor(red: 199/225, green: 151/225, blue: 193/255, alpha: 0.9)
+    UINavigationBar.appearance().isTranslucent = false
+    
+    // StatusbarStyle
+    UIApplication.shared.statusBarStyle = .lightContent
+    UIApplication.shared.isStatusBarHidden = false
     return true
   }
 
