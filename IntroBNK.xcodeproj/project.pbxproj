@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D069DBFE20500EEA000F7B71 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069DBFD20500EEA000F7B71 /* MemberCell.swift */; };
 		D0912E90204EE11000B7B665 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E8F204EE11000B7B665 /* NewsViewController.swift */; };
 		D0912E92204EE22C00B7B665 /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E91204EE22C00B7B665 /* MembersViewController.swift */; };
 		D0912E94204EE29000B7B665 /* MVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E93204EE29000B7B665 /* MVViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D069DBFD20500EEA000F7B71 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
 		D0912E8F204EE11000B7B665 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D0912E91204EE22C00B7B665 /* MembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
 		D0912E93204EE29000B7B665 /* MVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C727FE204ECFE600B36311 /* MainCell.swift */,
+				D069DBFD20500EEA000F7B71 /* MemberCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				D0E2F1E02049490900411F1C /* AppDelegate.swift in Sources */,
 				D0912E92204EE22C00B7B665 /* MembersViewController.swift in Sources */,
 				D0912E94204EE29000B7B665 /* MVViewController.swift in Sources */,
+				D069DBFE20500EEA000F7B71 /* MemberCell.swift in Sources */,
 				D0C727FF204ECFE600B36311 /* MainCell.swift in Sources */,
 				D0912E90204EE11000B7B665 /* NewsViewController.swift in Sources */,
 			);

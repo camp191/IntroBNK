@@ -33,6 +33,7 @@ extension MainViewController {
     case 1:
       let layout = UICollectionViewFlowLayout()
       let membersController = MembersViewController(collectionViewLayout: layout)
+      layout.minimumLineSpacing = 27
       navigationController?.pushViewController(membersController, animated: true)
     case 2:
       let layout = UICollectionViewFlowLayout()
