@@ -46,11 +46,11 @@ extension MainViewController {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 320, height: 152)
+    return CGSize(width: view.frame.width-40, height: (view.frame.width-40)/2.105)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 28, left: 0, bottom: 0, right: 0)
+    return UIEdgeInsets(top: 28, left: 20, bottom: 0, right: 20)
   }
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
