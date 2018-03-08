@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D002846F20511F840004C372 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002846E20511F840004C372 /* MemberViewController.swift */; };
+		D0028471205124BD0004C372 /* MemberDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0028470205124BD0004C372 /* MemberDetailCell.swift */; };
+		D002847420512DF10004C372 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002847320512DF10004C372 /* Colors.swift */; };
+		D00284782051362B0004C372 /* MVVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00284772051362B0004C372 /* MVVideoViewController.swift */; };
 		D069DBFE20500EEA000F7B71 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069DBFD20500EEA000F7B71 /* MemberCell.swift */; };
 		D0912E90204EE11000B7B665 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E8F204EE11000B7B665 /* NewsViewController.swift */; };
 		D0912E92204EE22C00B7B665 /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E91204EE22C00B7B665 /* MembersViewController.swift */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D002846E20511F840004C372 /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		D0028470205124BD0004C372 /* MemberDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailCell.swift; sourceTree = "<group>"; };
+		D002847320512DF10004C372 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		D00284772051362B0004C372 /* MVVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVideoViewController.swift; sourceTree = "<group>"; };
 		D069DBFD20500EEA000F7B71 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
 		D0912E8F204EE11000B7B665 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D0912E91204EE22C00B7B665 /* MembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
@@ -47,12 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D002847220512DE50004C372 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				D002847320512DF10004C372 /* Colors.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		D0912E95204EE2E900B7B665 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				D0E2F1E12049490900411F1C /* MainViewController.swift */,
 				D0912E93204EE29000B7B665 /* MVViewController.swift */,
+				D00284772051362B0004C372 /* MVVideoViewController.swift */,
 				D0912E91204EE22C00B7B665 /* MembersViewController.swift */,
+				D002846E20511F840004C372 /* MemberViewController.swift */,
 				D0912E8F204EE11000B7B665 /* NewsViewController.swift */,
 			);
 			path = Controllers;
@@ -71,6 +89,7 @@
 			children = (
 				D0C727FE204ECFE600B36311 /* MainCell.swift */,
 				D069DBFD20500EEA000F7B71 /* MemberCell.swift */,
+				D0028470205124BD0004C372 /* MemberDetailCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -102,6 +121,7 @@
 		D0E2F1DE2049490900411F1C /* IntroBNK */ = {
 			isa = PBXGroup;
 			children = (
+				D002847220512DE50004C372 /* Library */,
 				D0912E98204EE31000B7B665 /* Fonts */,
 				D0912E97204EE30400B7B665 /* Views */,
 				D0912E96204EE2F900B7B665 /* Singletons */,
@@ -188,12 +208,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E2F1E22049490900411F1C /* MainViewController.swift in Sources */,
+				D002847420512DF10004C372 /* Colors.swift in Sources */,
 				D0E2F1E02049490900411F1C /* AppDelegate.swift in Sources */,
+				D00284782051362B0004C372 /* MVVideoViewController.swift in Sources */,
 				D0912E92204EE22C00B7B665 /* MembersViewController.swift in Sources */,
 				D0912E94204EE29000B7B665 /* MVViewController.swift in Sources */,
+				D002846F20511F840004C372 /* MemberViewController.swift in Sources */,
 				D069DBFE20500EEA000F7B71 /* MemberCell.swift in Sources */,
 				D0C727FF204ECFE600B36311 /* MainCell.swift in Sources */,
 				D0912E90204EE11000B7B665 /* NewsViewController.swift in Sources */,
+				D0028471205124BD0004C372 /* MemberDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

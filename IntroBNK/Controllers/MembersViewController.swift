@@ -15,14 +15,29 @@ class MembersViewController: UICollectionViewController, UICollectionViewDelegat
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    setupNavigation()
+    setupCollectionView()
+  }
+  
+  func setupNavigation() {
+    navigationItem.title = "Members"
+  }
+  
+  func setupCollectionView() {
     collectionView?.register(MemberCell.self, forCellWithReuseIdentifier: cellMemberView)
     collectionView?.backgroundColor = .white
-    navigationItem.title = "Members"
   }
   
 }
 
 extension MembersViewController {
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let layout = UICollectionViewFlowLayout()
+    let memberViewController = MemberViewController(collectionViewLayout: layout)
+    memberViewController.titleName = "Kaew"
+    navigationController?.pushViewController(memberViewController, animated: true)
+  }
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: 18, left: 16, bottom: 18, right: 16)
   }

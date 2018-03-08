@@ -16,8 +16,17 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    setUpNavigation()
+    setupConllectionView()
+    
+  }
+  
+  func setupConllectionView() {
     collectionView?.backgroundColor = .white
     collectionView?.register(MainCell.self, forCellWithReuseIdentifier: mainCellIdentifier)
+  }
+  
+  func setUpNavigation() {
     navigationItem.title = "BNK48"
   }
   
@@ -38,6 +47,7 @@ extension MainViewController {
     case 2:
       let layout = UICollectionViewFlowLayout()
       let mvController = MVViewController(collectionViewLayout: layout)
+      layout.minimumLineSpacing = 24
       navigationController?.pushViewController(mvController, animated: true)
     default:
       let aleart = UIAlertController(title: "Error!!", message: "Please try again", preferredStyle: .alert)

@@ -13,13 +13,21 @@ class MainCell: UICollectionViewCell {
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-          self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
-        }, completion: nil)
+        UIView.animate(
+          withDuration: 0.3,
+          delay: 0, options: .curveEaseOut,
+          animations: {
+            self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }, completion: nil
+        )
       } else {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-          self.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: nil)
+        UIView.animate(
+          withDuration: 0.3,
+          delay: 0, options: .curveEaseOut,
+          animations: {
+            self.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: nil
+        )
       }
     }
   }

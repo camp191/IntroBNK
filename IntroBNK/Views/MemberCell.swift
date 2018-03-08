@@ -13,27 +13,24 @@ class MemberCell: UICollectionViewCell {
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-          self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
-        }, completion: nil)
+        UIView.animate(
+          withDuration: 0.3,
+          delay: 0, options: .curveEaseOut,
+          animations: {
+            self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }, completion: nil
+        )
       } else {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-          self.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: nil)
+        UIView.animate(
+          withDuration: 0.3,
+          delay: 0, options: .curveEaseOut,
+          animations: {
+            self.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: nil
+        )
       }
     }
   }
-  
-//  let view: UIView = {
-//    let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-//    view.clipsToBounds = false
-//    view.layer.shadowOpacity = 0.4
-//    view.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4).cgColor
-//    view.layer.shadowOffset = CGSize(width: 0, height: 1)
-//    view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 3).cgPath
-//
-//    return view
-//  }()
   
   let image: UIImageView = {
     let image = UIImageView()
@@ -50,12 +47,11 @@ class MemberCell: UICollectionViewCell {
     label.text = "แก้ว (Kaew)"
     label.font = UIFont(name: "Sukhumvit Set", size: 12)
     label.textAlignment = .center
-    label.textColor = UIColor(red: 121/255, green: 121/255, blue: 121/255, alpha: 100)
+    label.textColor = UIColor.grayText
     label.sizeToFit()
     
     return label
   }()
-  
   
   override init(frame: CGRect) {
     super.init(frame: frame)
