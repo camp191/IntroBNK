@@ -38,6 +38,7 @@ extension MainViewController {
     case 0:
       let layout = UICollectionViewFlowLayout()
       let newsController = NewsViewController(collectionViewLayout: layout)
+      layout.minimumLineSpacing = 27
       navigationController?.pushViewController(newsController, animated: true)
     case 1:
       let layout = UICollectionViewFlowLayout()

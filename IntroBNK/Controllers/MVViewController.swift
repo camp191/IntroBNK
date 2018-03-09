@@ -24,7 +24,7 @@ class MVViewController: UICollectionViewController, UICollectionViewDelegateFlow
   
   func setupCollectionView() {
     collectionView?.backgroundColor = .white
-    collectionView?.register(MemberDetailCell.self, forCellWithReuseIdentifier: cellID)
+    collectionView?.register(MVCell.self, forCellWithReuseIdentifier: cellID)
   }
   
 }
@@ -45,7 +45,7 @@ extension MVViewController {
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? MemberDetailCell else { return UICollectionViewCell() }
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? MVCell else { return UICollectionViewCell() }
     
     return cell
   }

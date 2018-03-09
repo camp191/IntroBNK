@@ -1,5 +1,5 @@
 //
-//  MemberDetailCell.swift
+//  MVCell.swift
 //  IntroBNK
 //
 //  Created by Thanapat Sorralump on 8/3/2561 BE.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemberDetailCell: UICollectionViewCell {
+class MVCell: UICollectionViewCell {
   
   override var isHighlighted: Bool {
     didSet {
