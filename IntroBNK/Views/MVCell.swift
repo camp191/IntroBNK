@@ -35,7 +35,7 @@ class MVCell: UICollectionViewCell {
   let cover: UIImageView = {
     let image = UIImageView()
     image.image = #imageLiteral(resourceName: "MVCover")
-    image.contentMode = .scaleAspectFit
+    image.contentMode = .scaleAspectFill
     image.layer.cornerRadius = 5
     image.clipsToBounds = true
     image.translatesAutoresizingMaskIntoConstraints = false
@@ -43,33 +43,28 @@ class MVCell: UICollectionViewCell {
     return image
   }()
   
-  let mvDetail: UITextView = {
-    let text = UITextView()
+  let mvDetail: UIStackView = {
+    let name = UILabel()
+    name.text = "Anata to Christmas Eve\nคำสัญญาแห่งคริสต์มาสอีฟ"
+    name.numberOfLines = 2
+    name.font = UIFont(name: "SukhumvitSet-SemiBold", size: 14)
+    name.textColor = UIColor.grayText
+    name.adjustsFontSizeToFitWidth = true
+    name.minimumScaleFactor = 0.2
     
-    let attributeText = NSMutableAttributedString(
-      string: "Anata to Christmas Eve\nคำสัญญาแห่งคริสต์มาสอีฟ",
-      attributes: [
-        NSAttributedStringKey.font: UIFont(name: "Sukhumvit Set", size: 14)!,
-        NSAttributedStringKey.foregroundColor: UIColor.grayText
-      ]
-    )
+    let date = UILabel()
+    date.text = "26 กุมภาพันธ์ 2018"
+    date.font = UIFont(name: "Sukhumvit Set", size: 10)
+    date.textColor = UIColor.grayText
+    date.adjustsFontSizeToFitWidth = true
+    date.minimumScaleFactor = 0.2
     
-    attributeText.append(NSAttributedString(
-      string: "\n\n26 กุมภาพันธ์ 2018",
-      attributes: [
-        NSAttributedStringKey.font: UIFont(name: "Sukhumvit Set", size: 12)!,
-        NSAttributedStringKey.foregroundColor: UIColor.grayText
-      ])
-    )
+    let stack = UIStackView(arrangedSubviews: [name, date])
+    stack.axis = .vertical
+    stack.distribution = .equalCentering
+    stack.translatesAutoresizingMaskIntoConstraints = false
     
-    text.attributedText = attributeText
-    text.textAlignment = .left
-    text.isEditable = false
-    text.isSelectable = false
-    text.isScrollEnabled = false
-    text.translatesAutoresizingMaskIntoConstraints = false
-    
-    return text
+    return stack
   }()
   
   override init(frame: CGRect) {
@@ -80,15 +75,15 @@ class MVCell: UICollectionViewCell {
       cover.leadingAnchor.constraint(equalTo: self.leadingAnchor),
       cover.topAnchor.constraint(equalTo: self.topAnchor),
       cover.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-      cover.widthAnchor.constraint(equalToConstant: self.frame.width / 2)
+      cover.widthAnchor.constraint(equalToConstant: self.frame.height * 1.78)
       ])
     
     addSubview(mvDetail)
     NSLayoutConstraint.activate([
       mvDetail.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 10),
       mvDetail.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-      mvDetail.topAnchor.constraint(equalTo: self.topAnchor),
-      mvDetail.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+      mvDetail.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+      mvDetail.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
       ])
     
   }
@@ -97,10 +92,4 @@ class MVCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 }
-
-
-
-
-
-
 

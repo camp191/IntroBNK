@@ -56,9 +56,10 @@ class NewsCell: UICollectionViewCell {
     text.numberOfLines = 5
     text.font = UIFont(name: "Sukhumvit Set", size: 14)
     text.textColor = UIColor.grayText
-    
-    
+    text.adjustsFontSizeToFitWidth = true
+    text.minimumScaleFactor = 0.2
     return text
+    
   }()
   
   override init(frame: CGRect) {
@@ -68,7 +69,7 @@ class NewsCell: UICollectionViewCell {
     pictureFrame.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width)
     
     wrapper.addSubview(detail)
-    detail.frame = CGRect(x: 15, y: self.frame.width + 5, width: self.frame.width, height: 100)
+    detail.frame = CGRect(x: 15, y: self.frame.width + 5, width: self.frame.width - 30, height: 100)
     
     addSubview(wrapper)
     NSLayoutConstraint.activate([
