@@ -32,7 +32,7 @@ class MVCell: UICollectionViewCell {
     }
   }
   
-  let cover: UIImageView = {
+  private let cover: UIImageView = {
     let image = UIImageView()
     image.image = #imageLiteral(resourceName: "MVCover")
     image.contentMode = .scaleAspectFill
@@ -43,18 +43,18 @@ class MVCell: UICollectionViewCell {
     return image
   }()
   
-  let mvDetail: UIStackView = {
+  private let mvDetail: UIStackView = {
     let name = UILabel()
     name.text = "Anata to Christmas Eve\nคำสัญญาแห่งคริสต์มาสอีฟ"
     name.numberOfLines = 2
-    name.font = UIFont(name: "SukhumvitSet-SemiBold", size: 14)
+    name.font = UIFont(name: "SukhumvitSet-Medium", size: 16)
     name.textColor = UIColor.grayText
     name.adjustsFontSizeToFitWidth = true
     name.minimumScaleFactor = 0.2
     
     let date = UILabel()
     date.text = "26 กุมภาพันธ์ 2018"
-    date.font = UIFont(name: "Sukhumvit Set", size: 10)
+    date.font = UIFont(name: "SukhumvitSet-Light", size: 10)
     date.textColor = UIColor.grayText
     date.adjustsFontSizeToFitWidth = true
     date.minimumScaleFactor = 0.2
@@ -82,8 +82,8 @@ class MVCell: UICollectionViewCell {
     NSLayoutConstraint.activate([
       mvDetail.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 10),
       mvDetail.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-      mvDetail.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-      mvDetail.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+      mvDetail.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+      mvDetail.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
       ])
     
   }

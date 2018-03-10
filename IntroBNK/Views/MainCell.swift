@@ -10,6 +10,13 @@ import UIKit
 
 class MainCell: UICollectionViewCell {
   
+  var mainData: Main? {
+    didSet {
+      guard let mainData = mainData else { return }
+      mainImage.image = UIImage(named: mainData.mainImage)
+    }
+  }
+  
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
@@ -32,7 +39,7 @@ class MainCell: UICollectionViewCell {
     }
   }
   
-  let mainImage: UIImageView = {
+  private let mainImage: UIImageView = {
     let image = UIImageView()
     image.contentMode = UIViewContentMode.scaleAspectFit
     image.layer.shadowOpacity = 0.25

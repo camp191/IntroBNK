@@ -10,7 +10,7 @@ import UIKit
 
 class MembersViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
-  let cellMemberView = "CellID"
+  private let cellMemberView = "CellID"
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,11 +19,11 @@ class MembersViewController: UICollectionViewController, UICollectionViewDelegat
     setupCollectionView()
   }
   
-  func setupNavigation() {
+  private func setupNavigation() {
     navigationItem.title = "Members"
   }
   
-  func setupCollectionView() {
+  private func setupCollectionView() {
     collectionView?.register(MemberCell.self, forCellWithReuseIdentifier: cellMemberView)
     collectionView?.backgroundColor = .white
   }

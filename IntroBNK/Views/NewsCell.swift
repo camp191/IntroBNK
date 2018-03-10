@@ -32,7 +32,7 @@ class NewsCell: UICollectionViewCell {
     }
   }
   
-  let wrapper: UIView = {
+  private let wrapper: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.layer.cornerRadius = 5
@@ -41,7 +41,7 @@ class NewsCell: UICollectionViewCell {
     return view
   }()
   
-  let pictureFrame: UIImageView = {
+  private let pictureFrame: UIImageView = {
     let image = UIImageView()
     image.image = #imageLiteral(resourceName: "NewsCover")
     image.contentMode = .scaleAspectFill
@@ -50,7 +50,7 @@ class NewsCell: UICollectionViewCell {
     return image
   }()
   
-  let detail: UILabel = {
+  private let detail: UILabel = {
     let text = UILabel()
     text.text = "วาเลนไทน์นี้เจอกันที่งาน “ปล่อย”\n14 กุมภาพันธ์ 2018\nเวลา 17.00 - 22.00 น.\nMain Stadium มหาวิทยาลัยธรรมศาสตร์ รังสิต"
     text.numberOfLines = 5
@@ -58,6 +58,7 @@ class NewsCell: UICollectionViewCell {
     text.textColor = UIColor.grayText
     text.adjustsFontSizeToFitWidth = true
     text.minimumScaleFactor = 0.2
+        
     return text
     
   }()

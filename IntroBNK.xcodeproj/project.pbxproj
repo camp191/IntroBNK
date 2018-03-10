@@ -12,6 +12,8 @@
 		D002847420512DF10004C372 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002847320512DF10004C372 /* Colors.swift */; };
 		D00284782051362B0004C372 /* MVVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00284772051362B0004C372 /* MVVideoViewController.swift */; };
 		D0393C9920526B5B00614EB4 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0393C9820526B5B00614EB4 /* NewsCell.swift */; };
+		D05031AD205382A300C7B8E6 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031AC205382A300C7B8E6 /* Main.swift */; };
+		D05031AF2053855D00C7B8E6 /* MVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031AE2053855D00C7B8E6 /* MVView.swift */; };
 		D069DBFE20500EEA000F7B71 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069DBFD20500EEA000F7B71 /* MemberCell.swift */; };
 		D0912E90204EE11000B7B665 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E8F204EE11000B7B665 /* NewsViewController.swift */; };
 		D0912E92204EE22C00B7B665 /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E91204EE22C00B7B665 /* MembersViewController.swift */; };
@@ -31,6 +33,8 @@
 		D002847320512DF10004C372 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D00284772051362B0004C372 /* MVVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVideoViewController.swift; sourceTree = "<group>"; };
 		D0393C9820526B5B00614EB4 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		D05031AC205382A300C7B8E6 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		D05031AE2053855D00C7B8E6 /* MVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVView.swift; sourceTree = "<group>"; };
 		D069DBFD20500EEA000F7B71 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
 		D0912E8F204EE11000B7B665 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D0912E91204EE22C00B7B665 /* MembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +69,14 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		D05031AB2053829300C7B8E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D05031AC205382A300C7B8E6 /* Main.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D0912E95204EE2E900B7B665 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +105,7 @@
 				D069DBFD20500EEA000F7B71 /* MemberCell.swift */,
 				D0028470205124BD0004C372 /* MVCell.swift */,
 				D0393C9820526B5B00614EB4 /* NewsCell.swift */,
+				D05031AE2053855D00C7B8E6 /* MVView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +137,7 @@
 		D0E2F1DE2049490900411F1C /* IntroBNK */ = {
 			isa = PBXGroup;
 			children = (
+				D05031AB2053829300C7B8E6 /* Models */,
 				D002847220512DE50004C372 /* Library */,
 				D0912E98204EE31000B7B665 /* Fonts */,
 				D0912E97204EE30400B7B665 /* Views */,
@@ -211,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E2F1E22049490900411F1C /* MainViewController.swift in Sources */,
+				D05031AD205382A300C7B8E6 /* Main.swift in Sources */,
 				D002847420512DF10004C372 /* Colors.swift in Sources */,
 				D0E2F1E02049490900411F1C /* AppDelegate.swift in Sources */,
 				D00284782051362B0004C372 /* MVVideoViewController.swift in Sources */,
@@ -218,6 +233,7 @@
 				D0912E94204EE29000B7B665 /* MVViewController.swift in Sources */,
 				D002846F20511F840004C372 /* MemberViewController.swift in Sources */,
 				D069DBFE20500EEA000F7B71 /* MemberCell.swift in Sources */,
+				D05031AF2053855D00C7B8E6 /* MVView.swift in Sources */,
 				D0C727FF204ECFE600B36311 /* MainCell.swift in Sources */,
 				D0912E90204EE11000B7B665 /* NewsViewController.swift in Sources */,
 				D0393C9920526B5B00614EB4 /* NewsCell.swift in Sources */,

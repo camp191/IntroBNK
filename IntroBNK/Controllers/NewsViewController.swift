@@ -10,7 +10,7 @@ import UIKit
 
 class NewsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
-  let newCell = "NewID"
+  private let newCell = "NewID"
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,11 +19,11 @@ class NewsViewController: UICollectionViewController, UICollectionViewDelegateFl
     setupCollectionView()
   }
   
-  func setupNavigation() {
+  private func setupNavigation() {
     navigationItem.title = "News"
   }
   
-  func setupCollectionView() {
+  private func setupCollectionView() {
     collectionView?.backgroundColor = .white
     collectionView?.register(NewsCell.self, forCellWithReuseIdentifier: newCell)
   }

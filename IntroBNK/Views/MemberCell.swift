@@ -32,7 +32,7 @@ class MemberCell: UICollectionViewCell {
     }
   }
   
-  let image: UIImageView = {
+  private let image: UIImageView = {
     let image = UIImageView()
     image.image = #imageLiteral(resourceName: "Kaew")
     image.contentMode = UIViewContentMode.scaleAspectFit
@@ -42,7 +42,7 @@ class MemberCell: UICollectionViewCell {
     return image
   }()
   
-  let name: UILabel = {
+  private let name: UILabel = {
     let label = UILabel()
     label.text = "แก้ว (Kaew)"
     label.font = UIFont(name: "Sukhumvit Set", size: 12)

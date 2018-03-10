@@ -10,7 +10,11 @@ import UIKit
 
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
-  let mainItems = ["News", "Members", "MV"]
+  let mainItems = [
+    Main(mainImage: "News"),
+    Main(mainImage: "Members"),
+    Main(mainImage: "MV")
+  ]
   let mainCellIdentifier = "CellID"
   
   override func viewDidLoad() {
@@ -21,12 +25,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     
   }
   
-  func setupConllectionView() {
+  private func setupConllectionView() {
     collectionView?.backgroundColor = .white
     collectionView?.register(MainCell.self, forCellWithReuseIdentifier: mainCellIdentifier)
   }
   
-  func setUpNavigation() {
+  private func setUpNavigation() {
     navigationItem.title = "BNK48"
   }
   
@@ -71,7 +75,9 @@ extension MainViewController {
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mainCellIdentifier, for: indexPath) as? MainCell else { return UICollectionViewCell() }
-    cell.mainImage.image = UIImage(named: mainItems[indexPath.row])
+    
+    let mainItem = mainItems[indexPath.item]
+    cell.mainData = mainItem
     
     return cell
   }

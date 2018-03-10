@@ -10,7 +10,8 @@ import UIKit
 
 class MVViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
-  let cellID = "MVCell"
+  private let cellID = "MVCell"
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -18,11 +19,11 @@ class MVViewController: UICollectionViewController, UICollectionViewDelegateFlow
     setupCollectionView()
   }
   
-  func setupNavigation() {
+  private func setupNavigation() {
     navigationItem.title = "Music Videos"
   }
   
-  func setupCollectionView() {
+  private func setupCollectionView() {
     collectionView?.backgroundColor = .white
     collectionView?.register(MVCell.self, forCellWithReuseIdentifier: cellID)
   }

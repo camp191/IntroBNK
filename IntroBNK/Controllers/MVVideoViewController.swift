@@ -11,17 +11,8 @@ import UIKit
 class MVVideoViewController: UIViewController {
   
   private let screen = UIScreen.main.bounds
-  
-  let webView: UIWebView = {
-    let web = UIWebView()
-    
-    if let url = URL(string: "https://www.youtube.com/watch?v=awJd6vaaZlc") {
-      web.loadRequest(URLRequest(url: url))
-    }
-    
-    return web
-  }()
-  
+  private let webView = MVView()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
