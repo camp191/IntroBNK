@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // StatusbarStyle
     UIApplication.shared.statusBarStyle = .lightContent
     UIApplication.shared.isStatusBarHidden = false
+    
+    // Firebase Init
+    FirebaseApp.configure()
     
     return true
   }

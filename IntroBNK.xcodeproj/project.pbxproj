@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F9410E03D36C79C4E3C1EE6 /* Pods_IntroBNK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6192CE4F32EAF5C59A4B72C /* Pods_IntroBNK.framework */; };
 		D002846F20511F840004C372 /* MemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002846E20511F840004C372 /* MemberVC.swift */; };
 		D0028471205124BD0004C372 /* MVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0028470205124BD0004C372 /* MVCell.swift */; };
 		D002847420512DF10004C372 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002847320512DF10004C372 /* Extensions.swift */; };
@@ -22,6 +23,7 @@
 		D0912E94204EE29000B7B665 /* MVVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E93204EE29000B7B665 /* MVVC.swift */; };
 		D0C727FB204EC39E00B36311 /* SukhumvitSet.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D0C727FA204EC39900B36311 /* SukhumvitSet.ttc */; };
 		D0C727FF204ECFE600B36311 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C727FE204ECFE600B36311 /* MainCell.swift */; };
+		D0CC8A7D20541A6C00844A07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0CC8A7C20541A6B00844A07 /* GoogleService-Info.plist */; };
 		D0E2F1E02049490900411F1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2F1DF2049490900411F1C /* AppDelegate.swift */; };
 		D0E2F1E22049490900411F1C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2F1E12049490900411F1C /* MainVC.swift */; };
 		D0E2F1E72049490900411F1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E2F1E62049490900411F1C /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		586038B0B0A15EB2ABF733DF /* Pods-IntroBNK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntroBNK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntroBNK/Pods-IntroBNK.debug.xcconfig"; sourceTree = "<group>"; };
+		C6192CE4F32EAF5C59A4B72C /* Pods_IntroBNK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntroBNK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D002846E20511F840004C372 /* MemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberVC.swift; sourceTree = "<group>"; };
 		D0028470205124BD0004C372 /* MVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCell.swift; sourceTree = "<group>"; };
 		D002847320512DF10004C372 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -44,12 +48,14 @@
 		D0912E93204EE29000B7B665 /* MVVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVC.swift; sourceTree = "<group>"; };
 		D0C727FA204EC39900B36311 /* SukhumvitSet.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = SukhumvitSet.ttc; sourceTree = "<group>"; };
 		D0C727FE204ECFE600B36311 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		D0CC8A7C20541A6B00844A07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0E2F1DC2049490900411F1C /* IntroBNK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntroBNK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E2F1DF2049490900411F1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E2F1E12049490900411F1C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		D0E2F1E62049490900411F1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0E2F1E92049490900411F1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0E2F1EB2049490900411F1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF2BE701669E766FCCF3077C /* Pods-IntroBNK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntroBNK.release.xcconfig"; path = "Pods/Target Support Files/Pods-IntroBNK/Pods-IntroBNK.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +63,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F9410E03D36C79C4E3C1EE6 /* Pods_IntroBNK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85D1032BE5B51E8C3497E792 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				586038B0B0A15EB2ABF733DF /* Pods-IntroBNK.debug.xcconfig */,
+				EF2BE701669E766FCCF3077C /* Pods-IntroBNK.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		91D708D8A01963F9498CAD98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6192CE4F32EAF5C59A4B72C /* Pods_IntroBNK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D002847220512DE50004C372 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +151,8 @@
 			children = (
 				D0E2F1DE2049490900411F1C /* IntroBNK */,
 				D0E2F1DD2049490900411F1C /* Products */,
+				85D1032BE5B51E8C3497E792 /* Pods */,
+				91D708D8A01963F9498CAD98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +175,7 @@
 				D0912E95204EE2E900B7B665 /* Controllers */,
 				D0E2F1E62049490900411F1C /* Assets.xcassets */,
 				D0E2F1E82049490900411F1C /* LaunchScreen.storyboard */,
+				D0CC8A7C20541A6B00844A07 /* GoogleService-Info.plist */,
 				D0E2F1EB2049490900411F1C /* Info.plist */,
 			);
 			path = IntroBNK;
@@ -161,9 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0E2F1EE2049490900411F1C /* Build configuration list for PBXNativeTarget "IntroBNK" */;
 			buildPhases = (
+				785861B283824B1EC4E61326 /* [CP] Check Pods Manifest.lock */,
 				D0E2F1D82049490900411F1C /* Sources */,
 				D0E2F1D92049490900411F1C /* Frameworks */,
 				D0E2F1DA2049490900411F1C /* Resources */,
+				CC1B8BFB54014EAE488D7B54 /* [CP] Embed Pods Frameworks */,
+				FFA9B52AA9B8F082D438FF8F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,12 +244,69 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E2F1EA2049490900411F1C /* LaunchScreen.storyboard in Resources */,
+				D0CC8A7D20541A6C00844A07 /* GoogleService-Info.plist in Resources */,
 				D0C727FB204EC39E00B36311 /* SukhumvitSet.ttc in Resources */,
 				D0E2F1E72049490900411F1C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		785861B283824B1EC4E61326 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IntroBNK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC1B8BFB54014EAE488D7B54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IntroBNK/Pods-IntroBNK-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IntroBNK/Pods-IntroBNK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFA9B52AA9B8F082D438FF8F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IntroBNK/Pods-IntroBNK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0E2F1D82049490900411F1C /* Sources */ = {
@@ -368,6 +455,7 @@
 		};
 		D0E2F1EF2049490900411F1C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 586038B0B0A15EB2ABF733DF /* Pods-IntroBNK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -383,6 +471,7 @@
 		};
 		D0E2F1F02049490900411F1C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF2BE701669E766FCCF3077C /* Pods-IntroBNK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
