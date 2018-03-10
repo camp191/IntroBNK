@@ -81,13 +81,17 @@ class MemberProfileCell: UICollectionViewCell {
     return detail
   }()
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    
+  private lazy var detailStack: UIStackView = {
     let detailStack = UIStackView(arrangedSubviews: [pictureMember, detailMember])
     detailStack.axis = .horizontal
     detailStack.spacing = 20
     detailStack.translatesAutoresizingMaskIntoConstraints = false
+    
+    return detailStack
+  }()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     
     addSubview(header)
     NSLayoutConstraint.activate([

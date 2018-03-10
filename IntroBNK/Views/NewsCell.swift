@@ -64,9 +64,7 @@ class NewsCell: UICollectionViewCell {
     
   }()
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    
+  private lazy var roundedView: UIView = {
     let roundedView = UIView()
     roundedView.translatesAutoresizingMaskIntoConstraints = false
     roundedView.layer.shadowColor = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 0.5).cgColor
@@ -74,6 +72,12 @@ class NewsCell: UICollectionViewCell {
     roundedView.layer.shadowOffset = CGSize(width: 0, height: 2)
     roundedView.layer.shadowOpacity = 1
     roundedView.layer.shadowRadius = 2
+    
+    return roundedView
+  }()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     
     roundedView.addSubview(wrapper)
     
