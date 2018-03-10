@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   private let newCell = "NewID"
   
@@ -29,7 +29,7 @@ class NewsViewController: UICollectionViewController, UICollectionViewDelegateFl
   }
 }
 
-extension NewsViewController {
+extension NewsVC {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)

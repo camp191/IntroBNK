@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MVViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   private let cellID = "MVCell"
   
@@ -30,10 +30,10 @@ class MVViewController: UICollectionViewController, UICollectionViewDelegateFlow
   
 }
 
-extension MVViewController {
+extension MVVC {
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let mvVideoViewController = MVVideoViewController()
+    let mvVideoViewController = MVVideoVC()
     navigationController?.pushViewController(mvVideoViewController, animated: true)
   }
   

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.makeKeyAndVisible()
     let layout = UICollectionViewFlowLayout()
-    let mainViewController = MainViewController(collectionViewLayout: layout)
+    let mainViewController = MainVC(collectionViewLayout: layout)
     layout.minimumLineSpacing = 28
     window?.rootViewController = UINavigationController(rootViewController: mainViewController)
     

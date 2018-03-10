@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MVVideoViewController: UIViewController {
+class MVVideoVC: UIViewController {
   
   private let screen = UIScreen.main.bounds
   private let webView = MVView()

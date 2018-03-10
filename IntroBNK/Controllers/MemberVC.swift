@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemberViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   var titleName: String?
   
@@ -18,4 +18,8 @@ class MemberViewController: UICollectionViewController, UICollectionViewDelegate
     navigationItem.title = titleName
     collectionView?.backgroundColor = .white
   }
+}
+
+extension MemberVC {
+  
 }

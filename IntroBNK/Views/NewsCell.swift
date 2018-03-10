@@ -36,6 +36,7 @@ class NewsCell: UICollectionViewCell {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.layer.cornerRadius = 5
+    view.backgroundColor = . white
     view.clipsToBounds = true
     
     return view
@@ -66,13 +67,29 @@ class NewsCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
+    let roundedView = UIView()
+    roundedView.translatesAutoresizingMaskIntoConstraints = false
+    roundedView.layer.shadowColor = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 0.5).cgColor
+    roundedView.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), cornerRadius: 5).cgPath
+    roundedView.layer.shadowOffset = CGSize(width: 0, height: 2)
+    roundedView.layer.shadowOpacity = 1
+    roundedView.layer.shadowRadius = 2
+    
+    roundedView.addSubview(wrapper)
+    
     wrapper.addSubview(pictureFrame)
     pictureFrame.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width)
     
     wrapper.addSubview(detail)
     detail.frame = CGRect(x: 15, y: self.frame.width + 5, width: self.frame.width - 30, height: 100)
     
-    addSubview(wrapper)
+    addSubview(roundedView)
+    NSLayoutConstraint.activate([
+      roundedView.topAnchor.constraint(equalTo: self.topAnchor),
+      roundedView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      roundedView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      roundedView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+      ])
     NSLayoutConstraint.activate([
       wrapper.topAnchor.constraint(equalTo: self.topAnchor),
       wrapper.leadingAnchor.constraint(equalTo: self.leadingAnchor),

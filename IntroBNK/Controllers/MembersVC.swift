@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MembersViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MembersVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   private let cellMemberView = "CellID"
   
@@ -30,10 +30,10 @@ class MembersViewController: UICollectionViewController, UICollectionViewDelegat
   
 }
 
-extension MembersViewController {
+extension MembersVC {
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let layout = UICollectionViewFlowLayout()
-    let memberViewController = MemberViewController(collectionViewLayout: layout)
+    let memberViewController = MemberVC(collectionViewLayout: layout)
     memberViewController.titleName = "Kaew"
     navigationController?.pushViewController(memberViewController, animated: true)
   }

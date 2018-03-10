@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   let mainItems = [
     Main(mainImage: "News"),
@@ -36,22 +36,22 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
   
 }
 
-extension MainViewController {
+extension MainVC {
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch indexPath.row {
     case 0:
       let layout = UICollectionViewFlowLayout()
-      let newsController = NewsViewController(collectionViewLayout: layout)
+      let newsController = NewsVC(collectionViewLayout: layout)
       layout.minimumLineSpacing = 27
       navigationController?.pushViewController(newsController, animated: true)
     case 1:
       let layout = UICollectionViewFlowLayout()
-      let membersController = MembersViewController(collectionViewLayout: layout)
+      let membersController = MembersVC(collectionViewLayout: layout)
       layout.minimumLineSpacing = 27
       navigationController?.pushViewController(membersController, animated: true)
     case 2:
       let layout = UICollectionViewFlowLayout()
-      let mvController = MVViewController(collectionViewLayout: layout)
+      let mvController = MVVC(collectionViewLayout: layout)
       layout.minimumLineSpacing = 24
       navigationController?.pushViewController(mvController, animated: true)
     default:
