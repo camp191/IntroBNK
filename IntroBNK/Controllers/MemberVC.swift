@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PushNavigationDelegate {
   
   var titleName: String?
   
@@ -23,6 +23,7 @@ class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     setupNavigation()
     setupCollectionView()
+    
   }
   
   func setupNavigation() {
@@ -31,12 +32,29 @@ class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   func setupCollectionView() {
     collectionView?.backgroundColor = .white
-    collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: profileCellName)
+    collectionView?.register(MemberProfileCell.self, forCellWithReuseIdentifier: profileCellName)
     collectionView?.register(OtherMemberCell.self, forCellWithReuseIdentifier: otherCellName)
+  }
+  
+  func pushViewController(viewController: UIViewController, animate: Bool) {
+    navigationController?.pushViewController(viewController, animated: animate)
   }
 }
 
 extension MemberVC {
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    
+    var edge = UIEdgeInsets()
+    
+    if section == 0 {
+      edge = UIEdgeInsets(top: 0, left: 15, bottom: 15, right: 15)
+    } else {
+      edge = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+
+    return edge
+  }
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 2
@@ -57,10 +75,10 @@ extension MemberVC {
     
     var cell = UICollectionViewCell()
     
-    let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: profileCellName, for: indexPath)
+    guard let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: profileCellName, for: indexPath) as? MemberProfileCell else { return UICollectionViewCell() }
     guard let otherCell = collectionView.dequeueReusableCell(withReuseIdentifier: otherCellName, for: indexPath) as? OtherMemberCell else { return UICollectionViewCell() }
     
-    profileCell.backgroundColor = .red
+    otherCell.delegate = self
     
     if indexPath.section == 0 {
       cell = profileCell
@@ -76,7 +94,7 @@ extension MemberVC {
     var size = CGSize()
     
     if indexPath.section == 0 {
-      size = CGSize(width: screen.width, height: 266)
+      size = CGSize(width: screen.width - 30, height: 320)
     } else if indexPath.section == 1 {
       size = CGSize(width: screen.width, height: 165)
     }
@@ -84,14 +102,4 @@ extension MemberVC {
   }
   
 }
-
-
-
-
-
-
-
-
-
-
 

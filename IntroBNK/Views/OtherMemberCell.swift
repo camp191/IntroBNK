@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol PushNavigationDelegate {
+  func pushViewController(viewController: UIViewController, animate: Bool)
+}
+
 class OtherMemberCell: UICollectionViewCell {
+  
+  var delegate: PushNavigationDelegate?
   
   private let memberCell = "memberCell"
   
@@ -19,6 +25,7 @@ class OtherMemberCell: UICollectionViewCell {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.backgroundColor = UIColor.clear
     collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.showsHorizontalScrollIndicator = false
     
     return collectionView
   }()
@@ -41,7 +48,7 @@ class OtherMemberCell: UICollectionViewCell {
     addSubview(header)
     NSLayoutConstraint.activate([
       header.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-      header.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+      header.topAnchor.constraint(equalTo: self.topAnchor),
       ])
     
     otherMembers.delegate = self
@@ -64,6 +71,13 @@ class OtherMemberCell: UICollectionViewCell {
 }
 
 extension OtherMemberCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let layout = UICollectionViewFlowLayout()
+    let otherMemberViewController = MemberVC(collectionViewLayout: layout)
+    otherMemberViewController.titleName = "Hello"
+    self.delegate?.pushViewController(viewController: otherMemberViewController, animate: true)
+  }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)

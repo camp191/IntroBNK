@@ -10,12 +10,12 @@ import UIKit
 
 class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
-  let mainItems = [
+  private let mainItems = [
     Main(mainImage: "News"),
     Main(mainImage: "Members"),
     Main(mainImage: "MV")
   ]
-  let mainCellIdentifier = "CellID"
+  private let mainCellIdentifier = "CellID"
   
   override func viewDidLoad() {
     super.viewDidLoad()
