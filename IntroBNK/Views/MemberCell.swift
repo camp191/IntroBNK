@@ -38,6 +38,7 @@ class MemberCell: UICollectionViewCell {
     image.contentMode = UIViewContentMode.scaleAspectFit
     image.layer.cornerRadius = 5
     image.clipsToBounds = true
+    image.sizeToFit()
 
     return image
   }()
@@ -56,8 +57,17 @@ class MemberCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    addSubview(image)
+    let roundedView = UIView()
+    roundedView.layer.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.19).cgColor
+    roundedView.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: frame.width, height: frame.width), cornerRadius: 3).cgPath
+    roundedView.layer.shadowOffset = CGSize(width: 0, height: 1)
+    roundedView.layer.shadowOpacity = 4
+    roundedView.layer.shadowRadius = 3
+    
+    roundedView.addSubview(image)
     image.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width)
+
+    addSubview(roundedView)
     
     addSubview(name)
     name.frame = CGRect(x: 0, y: frame.width + 15, width: frame.width, height: 10)

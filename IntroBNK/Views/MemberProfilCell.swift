@@ -21,32 +21,73 @@ class MemberProfileCell: UICollectionViewCell {
     return text
   }()
   
-  private let detailMember: UIStackView = {
+  private let pictureMember: UIImageView = {
     let profileImage = UIImageView()
     profileImage.image = #imageLiteral(resourceName: "KaewH")
     profileImage.contentMode = .scaleAspectFit
     profileImage.translatesAutoresizingMaskIntoConstraints = false
     profileImage.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 30) / 2.3).isActive = true
     
+    return profileImage
+  }()
+  
+  private let detailMember: UILabel = {
+    var name = "ณัฐรุจา ชุติวรรณโสภณ\nNatruja Chutiwansopon\n\n"
+    var date = "31 Mar 1994\n"
+    var height = "156 cm\n"
+    var province = "Chonburi\n"
+    var like = "เครื่องสำอาง,น้ำหอม\n"
+    var bloodGroup = "B\n"
+    var hobby = "เล่นเปียโน, นอน, เดินเล่น"
+    
+    let boldText = [NSAttributedStringKey.font: UIFont(name: "SukhumvitSet-SemiBold", size: 14)!]
+    let normalText = [NSAttributedStringKey.font: UIFont(name: "Sukhumvit Set", size: 14)!]
+    
+    let nameString = NSMutableAttributedString(string: name, attributes: boldText)
+    let dateString = NSMutableAttributedString(string: "Date of birth: ", attributes: boldText)
+    let heightString = NSMutableAttributedString(string: "Height: ", attributes: boldText)
+    let provinceString = NSMutableAttributedString(string: "Province: ", attributes: boldText)
+    let likeString = NSMutableAttributedString(string: "Like: ", attributes: boldText)
+    let bloodGroupString = NSMutableAttributedString(string: "Blood Group: ", attributes: boldText)
+    let hobbyString = NSMutableAttributedString(string: "Hobby: ", attributes: boldText)
+    
+    let dateDetail = NSMutableAttributedString(string: date, attributes: normalText)
+    let heightDetail = NSMutableAttributedString(string: height, attributes: normalText)
+    let provinceDetail = NSMutableAttributedString(string: province, attributes: normalText)
+    let likeDetail = NSMutableAttributedString(string: like, attributes: normalText)
+    let bloodGroupDetail = NSMutableAttributedString(string: bloodGroup, attributes: normalText)
+    let hobbyDetail = NSMutableAttributedString(string: hobby, attributes: normalText)
+    
+    nameString.append(dateString)
+    nameString.append(dateDetail)
+    nameString.append(heightString)
+    nameString.append(heightDetail)
+    nameString.append(provinceString)
+    nameString.append(provinceDetail)
+    nameString.append(likeString)
+    nameString.append(likeDetail)
+    nameString.append(bloodGroupString)
+    nameString.append(bloodGroupDetail)
+    nameString.append(hobbyString)
+    nameString.append(hobbyDetail)
     
     let detail = UILabel()
+    detail.attributedText = nameString
     detail.textColor = UIColor.grayText
-    detail.font = UIFont(name: "SukhumvitSet-SemiBold", size: 14)
-    detail.text = "ณัฐรุจา ชุติวรรณโสภณ\nNatruja Chutiwansopon\n\nDate of birth: 31 Mar 1994\nHeight: 156 cm\nProvince: Chonburi\nLike: เครื่องสำอาง,น้ำหอม\nBlood Group: B\nHobby: เล่นเปียโน, นอน, เดินเล่น"
     detail.numberOfLines = 9
     detail.adjustsFontSizeToFitWidth = true
     detail.minimumScaleFactor = 0.2
     
-    let stack = UIStackView(arrangedSubviews: [profileImage, detail])
-    stack.axis = .horizontal
-    stack.spacing = 20
-    stack.translatesAutoresizingMaskIntoConstraints = false
-    
-    return stack
+    return detail
   }()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    
+    let detailStack = UIStackView(arrangedSubviews: [pictureMember, detailMember])
+    detailStack.axis = .horizontal
+    detailStack.spacing = 20
+    detailStack.translatesAutoresizingMaskIntoConstraints = false
     
     addSubview(header)
     NSLayoutConstraint.activate([
@@ -54,12 +95,12 @@ class MemberProfileCell: UICollectionViewCell {
       header.topAnchor.constraint(equalTo: self.topAnchor, constant: 20)
       ])
     
-    addSubview(detailMember)
+    addSubview(detailStack)
     NSLayoutConstraint.activate([
-      detailMember.topAnchor.constraint(equalTo: header.bottomAnchor),
-      detailMember.leftAnchor.constraint(equalTo: self.leftAnchor),
-      detailMember.rightAnchor.constraint(equalTo: self.rightAnchor),
-      detailMember.heightAnchor.constraint(equalToConstant: 270)
+      detailStack.topAnchor.constraint(equalTo: header.bottomAnchor),
+      detailStack.leftAnchor.constraint(equalTo: self.leftAnchor),
+      detailStack.rightAnchor.constraint(equalTo: self.rightAnchor),
+      detailStack.heightAnchor.constraint(equalToConstant: 270)
       ])
   }
   
