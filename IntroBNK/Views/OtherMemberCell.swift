@@ -41,7 +41,6 @@ class OtherMemberCell: UICollectionViewCell {
     return text
   }()
   
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -58,7 +57,7 @@ class OtherMemberCell: UICollectionViewCell {
     NSLayoutConstraint.activate([
       otherMembers.leadingAnchor.constraint(equalTo: self.leadingAnchor),
       otherMembers.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-      otherMembers.topAnchor.constraint(equalTo: header.bottomAnchor),
+      otherMembers.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 5),
       otherMembers.widthAnchor.constraint(equalToConstant: self.frame.width),
       otherMembers.heightAnchor.constraint(equalToConstant: 150)
       ])
