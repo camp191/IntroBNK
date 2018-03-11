@@ -10,6 +10,30 @@ import UIKit
 
 class MVCell: UICollectionViewCell {
   
+  var musicVideo: MusicVideo? {
+    didSet {
+      guard let musicVideo = musicVideo else { return }
+      
+      name.text = "\(musicVideo.title)\n\(musicVideo.titleThai)"
+      date.text = String(describing: musicVideo.date)
+      
+      guard let urlImage = URL(string: musicVideo.pic) else { return }
+      URLSession.shared.dataTask(with: urlImage) { (data, response, err) in
+        if let err = err {
+          print("Failed to retrieve the image: ", err)
+          return
+        }
+        guard let imageData = data else { return }
+        let image = UIImage(data: imageData)
+        
+        DispatchQueue.main.async {
+          self.cover.image = image
+        }
+      }.resume()
+      
+    }
+  }
+  
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
@@ -43,15 +67,18 @@ class MVCell: UICollectionViewCell {
     return image
   }()
   
-  private let mvDetail: UIStackView = {
+  private let name: UILabel = {
     let name = UILabel()
-    name.text = "Anata to Christmas Eve\nคำสัญญาแห่งคริสต์มาสอีฟ"
     name.numberOfLines = 2
     name.font = UIFont(name: "SukhumvitSet-Medium", size: 16)
     name.textColor = UIColor.grayText
     name.adjustsFontSizeToFitWidth = true
     name.minimumScaleFactor = 0.2
     
+    return name
+  }()
+  
+  private let date: UILabel = {
     let date = UILabel()
     date.text = "26 กุมภาพันธ์ 2018"
     date.font = UIFont(name: "SukhumvitSet-Light", size: 10)
@@ -59,7 +86,11 @@ class MVCell: UICollectionViewCell {
     date.adjustsFontSizeToFitWidth = true
     date.minimumScaleFactor = 0.2
     
-    let stack = UIStackView(arrangedSubviews: [name, date])
+    return date
+  }()
+  
+  private lazy var mvDetail: UIStackView = {
+    let stack = UIStackView(arrangedSubviews: [self.name, self.date])
     stack.axis = .vertical
     stack.distribution = .equalCentering
     stack.translatesAutoresizingMaskIntoConstraints = false

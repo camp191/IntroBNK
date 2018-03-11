@@ -7,5 +7,6 @@ target 'IntroBNK' do
 
   # Pods for IntroBNK
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
 
 end

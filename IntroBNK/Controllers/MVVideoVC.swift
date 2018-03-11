@@ -10,6 +10,12 @@ import UIKit
 
 class MVVideoVC: UIViewController {
   
+  var mvLink: String? {
+    didSet {
+      webView.mvLink = mvLink
+    }
+  }
+  
   private let screen = UIScreen.main.bounds
   private let webView = MVView()
 

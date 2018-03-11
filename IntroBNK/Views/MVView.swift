@@ -10,13 +10,16 @@ import UIKit
 
 class MVView: UIView {
   
-  private let webView: UIWebView = {
-    let web = UIWebView()
-    
-    if let url = URL(string: "https://www.youtube.com/watch?v=awJd6vaaZlc") {
-      web.loadRequest(URLRequest(url: url))
+  var mvLink: String? {
+    didSet {
+      guard let mvLink = mvLink else { return }
+      guard let url = URL(string: mvLink) else { return }
+      self.webView.loadRequest(URLRequest(url: url))
     }
-    
+  }
+  
+  private lazy var webView: UIWebView = {
+    let web = UIWebView()
     web.translatesAutoresizingMaskIntoConstraints = false
     
     return web
@@ -24,7 +27,6 @@ class MVView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
     addSubview(webView)
     NSLayoutConstraint.activate([
       webView.leadingAnchor.constraint(equalTo: self.leadingAnchor),

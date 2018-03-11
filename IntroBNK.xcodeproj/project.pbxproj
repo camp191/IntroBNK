@@ -17,6 +17,7 @@
 		D05031AF2053855D00C7B8E6 /* MVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031AE2053855D00C7B8E6 /* MVView.swift */; };
 		D05031B1205397D000C7B8E6 /* MemberProfilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031B0205397D000C7B8E6 /* MemberProfilCell.swift */; };
 		D05031B32053980600C7B8E6 /* OtherMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031B22053980600C7B8E6 /* OtherMemberCell.swift */; };
+		D058A92D20551E31006556D4 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D058A92C20551E31006556D4 /* MusicVideo.swift */; };
 		D069DBFE20500EEA000F7B71 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069DBFD20500EEA000F7B71 /* MemberCell.swift */; };
 		D0912E90204EE11000B7B665 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E8F204EE11000B7B665 /* NewsVC.swift */; };
 		D0912E92204EE22C00B7B665 /* MembersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0912E91204EE22C00B7B665 /* MembersVC.swift */; };
@@ -42,6 +43,7 @@
 		D05031AE2053855D00C7B8E6 /* MVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVView.swift; sourceTree = "<group>"; };
 		D05031B0205397D000C7B8E6 /* MemberProfilCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfilCell.swift; sourceTree = "<group>"; };
 		D05031B22053980600C7B8E6 /* OtherMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMemberCell.swift; sourceTree = "<group>"; };
+		D058A92C20551E31006556D4 /* MusicVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 		D069DBFD20500EEA000F7B71 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
 		D0912E8F204EE11000B7B665 /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
 		D0912E91204EE22C00B7B665 /* MembersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersVC.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				D05031AC205382A300C7B8E6 /* Main.swift */,
+				D058A92C20551E31006556D4 /* MusicVideo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,12 +281,28 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IntroBNK/Pods-IntroBNK-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +337,7 @@
 				D05031AD205382A300C7B8E6 /* Main.swift in Sources */,
 				D002847420512DF10004C372 /* Extensions.swift in Sources */,
 				D0E2F1E02049490900411F1C /* AppDelegate.swift in Sources */,
+				D058A92D20551E31006556D4 /* MusicVideo.swift in Sources */,
 				D00284782051362B0004C372 /* MVVideoVC.swift in Sources */,
 				D0912E92204EE22C00B7B665 /* MembersVC.swift in Sources */,
 				D0912E94204EE29000B7B665 /* MVVC.swift in Sources */,
