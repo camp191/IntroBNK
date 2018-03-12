@@ -16,7 +16,7 @@ class MVCell: UICollectionViewCell {
     didSet {
       guard let musicVideo = musicVideo else { return }
       
-      self.fetchPictureDelegate?.fetchImageData(linkImageString: musicVideo.pic, completion: { (imageData) in
+      fetchPictureDelegate?.fetchImageData(linkImageString: musicVideo.pic, completion: { (imageData) in
         DispatchQueue.main.async {
           self.cover.image = UIImage(data: imageData)
           self.loading.stopAnimating()
@@ -66,7 +66,7 @@ class MVCell: UICollectionViewCell {
   
   private let cover: UIImageView = {
     let image = UIImageView()
-    image.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+    image.backgroundColor = UIColor.coverGray
     image.contentMode = .scaleAspectFill
     image.layer.cornerRadius = 5
     image.clipsToBounds = true

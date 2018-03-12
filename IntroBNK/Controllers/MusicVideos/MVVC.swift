@@ -54,7 +54,7 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
     }
   }
   
-  func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) -> Void {
+  internal func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) -> Void {
     if let urlImage = URL(string: linkImageString) {
       let task = URLSession.shared.dataTask(with: urlImage, completionHandler: { (data, res, err) in
         if let err = err {

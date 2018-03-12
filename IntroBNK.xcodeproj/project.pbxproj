@@ -13,6 +13,7 @@
 		D002847420512DF10004C372 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002847320512DF10004C372 /* Extensions.swift */; };
 		D00284782051362B0004C372 /* MVVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00284772051362B0004C372 /* MVVideoVC.swift */; };
 		D0215A8D2056C42A003256CF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0215A8C2056C42A003256CF /* Protocols.swift */; };
+		D0215A972056E007003256CF /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0215A962056E007003256CF /* News.swift */; };
 		D0393C9920526B5B00614EB4 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0393C9820526B5B00614EB4 /* NewsCell.swift */; };
 		D05031AD205382A300C7B8E6 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031AC205382A300C7B8E6 /* Main.swift */; };
 		D05031AF2053855D00C7B8E6 /* MVVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031AE2053855D00C7B8E6 /* MVVideoView.swift */; };
@@ -40,6 +41,7 @@
 		D002847320512DF10004C372 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D00284772051362B0004C372 /* MVVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVideoVC.swift; sourceTree = "<group>"; };
 		D0215A8C2056C42A003256CF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		D0215A962056E007003256CF /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		D0393C9820526B5B00614EB4 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		D05031AC205382A300C7B8E6 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		D05031AE2053855D00C7B8E6 /* MVVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVideoView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				D05031AC205382A300C7B8E6 /* Main.swift */,
 				D058A92C20551E31006556D4 /* MusicVideo.swift */,
+				D0215A962056E007003256CF /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				D0215A8D2056C42A003256CF /* Protocols.swift in Sources */,
 				D002847420512DF10004C372 /* Extensions.swift in Sources */,
 				D0E2F1E02049490900411F1C /* AppDelegate.swift in Sources */,
+				D0215A972056E007003256CF /* News.swift in Sources */,
 				D058A92D20551E31006556D4 /* MusicVideo.swift in Sources */,
 				D00284782051362B0004C372 /* MVVideoVC.swift in Sources */,
 				D0912E92204EE22C00B7B665 /* MembersVC.swift in Sources */,

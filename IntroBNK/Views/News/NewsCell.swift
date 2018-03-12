@@ -10,6 +10,34 @@ import UIKit
 
 class NewsCell: UICollectionViewCell {
   
+  var fetchPictureDelegate: FetchImageDelegate?
+  
+  var news: News? {
+    didSet {
+      guard let news = news else { return }
+      
+      let dateFormat = DateFormatter()
+      dateFormat.dateStyle = .long
+      dateFormat.timeStyle = .none
+      let date = dateFormat.string(from: news.date)
+      
+      let timeFormat = DateFormatter()
+      timeFormat.dateStyle = .long
+      timeFormat.timeStyle = .long
+      let time = dateFormat.string(from: news.date)
+      
+      detail.text = "\(news.title)\n\(date)\n\(time)\n\(news.place)"
+      
+      fetchPictureDelegate?.fetchImageData(linkImageString: news.pic, completion: { (imageData) in
+        DispatchQueue.main.async {
+          self.pictureFrame.image = UIImage(data: imageData)
+          self.loading.stopAnimating()
+          self.loading.hidesWhenStopped = true
+        }
+      })
+    }
+  }
+  
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
@@ -32,6 +60,15 @@ class NewsCell: UICollectionViewCell {
     }
   }
   
+  private let loading: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView()
+    indicator.activityIndicatorViewStyle = .gray
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    indicator.startAnimating()
+    
+    return indicator
+  }()
+  
   private let wrapper: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +81,7 @@ class NewsCell: UICollectionViewCell {
   
   private let pictureFrame: UIImageView = {
     let image = UIImageView()
-    image.image = #imageLiteral(resourceName: "NewsCover")
+    image.backgroundColor = UIColor.coverGray
     image.contentMode = .scaleAspectFill
     image.clipsToBounds = true
     
@@ -78,6 +115,14 @@ class NewsCell: UICollectionViewCell {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    
+    pictureFrame.addSubview(loading)
+    NSLayoutConstraint.activate([
+      loading.centerYAnchor.constraint(equalTo: pictureFrame.centerYAnchor),
+      loading.centerXAnchor.constraint(equalTo: pictureFrame.centerXAnchor),
+      loading.widthAnchor.constraint(equalToConstant: 50),
+      loading.heightAnchor.constraint(equalToConstant: 50)
+      ])
     
     roundedView.addSubview(wrapper)
     
