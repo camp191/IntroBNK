@@ -9,52 +9,11 @@
 import UIKit
 import Firebase
 
-class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, FetchImageDelegate {
   
-  var musicVideos = [MusicVideo]()
+  private var musicVideos = [MusicVideo]()
   
-  let db = Firestore.firestore()
-  
-  func getMVData() {
-    db.collection("MusicVideos").getDocuments { (querySnapshot, err) in
-      if let err = err {
-        let alert = UIAlertController(title: "พบความผิดพลาด", message: "กรุณาเช็คอินเตอร์เน็ต", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        print("Err: \(err)")
-      } else {
-        for document in querySnapshot!.documents {
-          
-          guard let urlImage = URL(string: document.data()["pic"] as! String) else { return }
-          URLSession.shared.dataTask(with: urlImage) { (data, response, err) in
-            if let err = err {
-              print("Failed to retrieve the image: ", err)
-              return
-            }
-            guard let imageData = data else { return }
-            guard let image = UIImage(data: imageData) else { return }
-            
-            let musicVideo = MusicVideo(
-              id: document.documentID,
-              title: document.data()["title"] as! String,
-              titleThai: document.data()["titleThai"] as! String,
-              pic: image,
-              link: document.data()["link"] as! String,
-              date: document.data()["date"] as! Date
-            )
-            self.musicVideos.append(musicVideo)
-            
-            DispatchQueue.main.async {
-              self.collectionView?.reloadData()
-              self.loading.hidesWhenStopped = true
-              self.loading.stopAnimating()
-            }
-          }.resume()
-        }
-      }
-    }
-  }
-  
+  private let db = Firestore.firestore()
   private let cellID = "MVCell"
   
   private let loading: UIActivityIndicatorView = {
@@ -65,6 +24,49 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     return indicator
   }()
+  
+  func getMVData() {
+    db.collection("MusicVideos").getDocuments { (querySnapshot, err) in
+      if let err = err {
+        let alert = UIAlertController(title: "พบความผิดพลาด", message: "กรุณาเช็คอินเตอร์เน็ต", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        print("Err: \(err)")
+      } else {
+        for document in querySnapshot!.documents {
+          let musicVideo = MusicVideo(
+            id: document.documentID,
+            title: document.data()["title"] as! String,
+            titleThai: document.data()["titleThai"] as! String,
+            pic: document.data()["pic"] as! String,
+            link: document.data()["link"] as! String,
+            date: document.data()["date"] as! Date
+          )
+          self.musicVideos.append(musicVideo)
+        }
+        
+        DispatchQueue.main.async {
+          self.collectionView?.reloadData()
+          self.loading.hidesWhenStopped = true
+          self.loading.stopAnimating()
+        }
+      }
+    }
+  }
+  
+  func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) -> Void {
+    if let urlImage = URL(string: linkImageString) {
+      let task = URLSession.shared.dataTask(with: urlImage, completionHandler: { (data, res, err) in
+        if let err = err {
+          print("Failed to retrieve the image: ", err)
+          return
+        }
+        guard let imageData = data else { return }
+        completion(imageData)
+      })
+      task.resume()
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -116,6 +118,7 @@ extension MVVC {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? MVCell else { return UICollectionViewCell() }
     
     let musicVideo = musicVideos[indexPath.item]
+    cell.fetchPictureDelegate = self
     cell.musicVideo = musicVideo
     
     return cell

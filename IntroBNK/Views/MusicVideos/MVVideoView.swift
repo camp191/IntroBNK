@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MVView: UIView {
+class MVVideoView: UIView {
   
   var mvLink: String? {
     didSet {

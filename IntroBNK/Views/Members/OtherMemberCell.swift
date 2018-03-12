@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol PushNavigationDelegate {
-  func pushViewController(viewController: UIViewController, animate: Bool)
-}
-
 class OtherMemberCell: UICollectionViewCell {
   
   var delegate: PushNavigationDelegate?

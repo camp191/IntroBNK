@@ -12,9 +12,10 @@
 		D0028471205124BD0004C372 /* MVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0028470205124BD0004C372 /* MVCell.swift */; };
 		D002847420512DF10004C372 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002847320512DF10004C372 /* Extensions.swift */; };
 		D00284782051362B0004C372 /* MVVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00284772051362B0004C372 /* MVVideoVC.swift */; };
+		D0215A8D2056C42A003256CF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0215A8C2056C42A003256CF /* Protocols.swift */; };
 		D0393C9920526B5B00614EB4 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0393C9820526B5B00614EB4 /* NewsCell.swift */; };
 		D05031AD205382A300C7B8E6 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031AC205382A300C7B8E6 /* Main.swift */; };
-		D05031AF2053855D00C7B8E6 /* MVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031AE2053855D00C7B8E6 /* MVView.swift */; };
+		D05031AF2053855D00C7B8E6 /* MVVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031AE2053855D00C7B8E6 /* MVVideoView.swift */; };
 		D05031B1205397D000C7B8E6 /* MemberProfilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031B0205397D000C7B8E6 /* MemberProfilCell.swift */; };
 		D05031B32053980600C7B8E6 /* OtherMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05031B22053980600C7B8E6 /* OtherMemberCell.swift */; };
 		D058A92D20551E31006556D4 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D058A92C20551E31006556D4 /* MusicVideo.swift */; };
@@ -38,9 +39,10 @@
 		D0028470205124BD0004C372 /* MVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCell.swift; sourceTree = "<group>"; };
 		D002847320512DF10004C372 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D00284772051362B0004C372 /* MVVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVideoVC.swift; sourceTree = "<group>"; };
+		D0215A8C2056C42A003256CF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D0393C9820526B5B00614EB4 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		D05031AC205382A300C7B8E6 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		D05031AE2053855D00C7B8E6 /* MVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVView.swift; sourceTree = "<group>"; };
+		D05031AE2053855D00C7B8E6 /* MVVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVideoView.swift; sourceTree = "<group>"; };
 		D05031B0205397D000C7B8E6 /* MemberProfilCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfilCell.swift; sourceTree = "<group>"; };
 		D05031B22053980600C7B8E6 /* OtherMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMemberCell.swift; sourceTree = "<group>"; };
 		D058A92C20551E31006556D4 /* MusicVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
@@ -89,12 +91,82 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D002847220512DE50004C372 /* Library */ = {
+		D002847220512DE50004C372 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				D0215A8C2056C42A003256CF /* Protocols.swift */,
 				D002847320512DF10004C372 /* Extensions.swift */,
 			);
-			path = Library;
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D0215A8E2056D3A6003256CF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D0E2F1E12049490900411F1C /* MainVC.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D0215A8F2056D3AE003256CF /* News */ = {
+			isa = PBXGroup;
+			children = (
+				D0912E8F204EE11000B7B665 /* NewsVC.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		D0215A902056D3C0003256CF /* MusicVideos */ = {
+			isa = PBXGroup;
+			children = (
+				D0912E93204EE29000B7B665 /* MVVC.swift */,
+				D00284772051362B0004C372 /* MVVideoVC.swift */,
+			);
+			path = MusicVideos;
+			sourceTree = "<group>";
+		};
+		D0215A912056D3CE003256CF /* Members */ = {
+			isa = PBXGroup;
+			children = (
+				D0912E91204EE22C00B7B665 /* MembersVC.swift */,
+				D002846E20511F840004C372 /* MemberVC.swift */,
+			);
+			path = Members;
+			sourceTree = "<group>";
+		};
+		D0215A922056D3D9003256CF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D0C727FE204ECFE600B36311 /* MainCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D0215A932056D3E1003256CF /* Members */ = {
+			isa = PBXGroup;
+			children = (
+				D069DBFD20500EEA000F7B71 /* MemberCell.swift */,
+				D05031B0205397D000C7B8E6 /* MemberProfilCell.swift */,
+				D05031B22053980600C7B8E6 /* OtherMemberCell.swift */,
+			);
+			path = Members;
+			sourceTree = "<group>";
+		};
+		D0215A942056D3F0003256CF /* MusicVideos */ = {
+			isa = PBXGroup;
+			children = (
+				D0028470205124BD0004C372 /* MVCell.swift */,
+				D05031AE2053855D00C7B8E6 /* MVVideoView.swift */,
+			);
+			path = MusicVideos;
+			sourceTree = "<group>";
+		};
+		D0215A952056D3FC003256CF /* News */ = {
+			isa = PBXGroup;
+			children = (
+				D0393C9820526B5B00614EB4 /* NewsCell.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		D05031AB2053829300C7B8E6 /* Models */ = {
@@ -109,12 +181,10 @@
 		D0912E95204EE2E900B7B665 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D0E2F1E12049490900411F1C /* MainVC.swift */,
-				D0912E93204EE29000B7B665 /* MVVC.swift */,
-				D00284772051362B0004C372 /* MVVideoVC.swift */,
-				D0912E91204EE22C00B7B665 /* MembersVC.swift */,
-				D002846E20511F840004C372 /* MemberVC.swift */,
-				D0912E8F204EE11000B7B665 /* NewsVC.swift */,
+				D0215A912056D3CE003256CF /* Members */,
+				D0215A902056D3C0003256CF /* MusicVideos */,
+				D0215A8F2056D3AE003256CF /* News */,
+				D0215A8E2056D3A6003256CF /* Main */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -130,13 +200,10 @@
 		D0912E97204EE30400B7B665 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D0C727FE204ECFE600B36311 /* MainCell.swift */,
-				D069DBFD20500EEA000F7B71 /* MemberCell.swift */,
-				D0028470205124BD0004C372 /* MVCell.swift */,
-				D0393C9820526B5B00614EB4 /* NewsCell.swift */,
-				D05031AE2053855D00C7B8E6 /* MVView.swift */,
-				D05031B0205397D000C7B8E6 /* MemberProfilCell.swift */,
-				D05031B22053980600C7B8E6 /* OtherMemberCell.swift */,
+				D0215A952056D3FC003256CF /* News */,
+				D0215A942056D3F0003256CF /* MusicVideos */,
+				D0215A932056D3E1003256CF /* Members */,
+				D0215A922056D3D9003256CF /* Main */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				D05031AB2053829300C7B8E6 /* Models */,
-				D002847220512DE50004C372 /* Library */,
+				D002847220512DE50004C372 /* SupportingFiles */,
 				D0912E98204EE31000B7B665 /* Fonts */,
 				D0912E97204EE30400B7B665 /* Views */,
 				D0912E96204EE2F900B7B665 /* Singletons */,
@@ -335,6 +402,7 @@
 				D0E2F1E22049490900411F1C /* MainVC.swift in Sources */,
 				D05031B1205397D000C7B8E6 /* MemberProfilCell.swift in Sources */,
 				D05031AD205382A300C7B8E6 /* Main.swift in Sources */,
+				D0215A8D2056C42A003256CF /* Protocols.swift in Sources */,
 				D002847420512DF10004C372 /* Extensions.swift in Sources */,
 				D0E2F1E02049490900411F1C /* AppDelegate.swift in Sources */,
 				D058A92D20551E31006556D4 /* MusicVideo.swift in Sources */,
@@ -344,7 +412,7 @@
 				D002846F20511F840004C372 /* MemberVC.swift in Sources */,
 				D069DBFE20500EEA000F7B71 /* MemberCell.swift in Sources */,
 				D05031B32053980600C7B8E6 /* OtherMemberCell.swift in Sources */,
-				D05031AF2053855D00C7B8E6 /* MVView.swift in Sources */,
+				D05031AF2053855D00C7B8E6 /* MVVideoView.swift in Sources */,
 				D0C727FF204ECFE600B36311 /* MainCell.swift in Sources */,
 				D0912E90204EE11000B7B665 /* NewsVC.swift in Sources */,
 				D0393C9920526B5B00614EB4 /* NewsCell.swift in Sources */,

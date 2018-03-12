@@ -10,13 +10,21 @@ import UIKit
 
 class MVCell: UICollectionViewCell {
   
+  var fetchPictureDelegate: FetchImageDelegate?
+  
   var musicVideo: MusicVideo? {
     didSet {
       guard let musicVideo = musicVideo else { return }
       
-      name.text = "\(musicVideo.title)\n\(musicVideo.titleThai)"
-      cover.image = musicVideo.pic
+      self.fetchPictureDelegate?.fetchImageData(linkImageString: musicVideo.pic, completion: { (imageData) in
+        DispatchQueue.main.async {
+          self.cover.image = UIImage(data: imageData)
+          self.loading.stopAnimating()
+          self.loading.hidesWhenStopped = true
+        }
+      })
       
+      name.text = "\(musicVideo.title)\n\(musicVideo.titleThai)"
       let dateFormat = DateFormatter()
       dateFormat.dateStyle = .long
       dateFormat.timeStyle = .none

@@ -17,7 +17,7 @@ class MVVideoVC: UIViewController {
   }
   
   private let screen = UIScreen.main.bounds
-  private let webView = MVView()
+  private let webView = MVVideoView()
 
   override func viewDidLoad() {
     super.viewDidLoad()

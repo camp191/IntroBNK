@@ -6,13 +6,13 @@
 //  Copyright © 2561 Thanapat Sorralump. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct MusicVideo {
   var id: String
   var title: String
   var titleThai: String
-  var pic: UIImage
+  var pic: String
   var link: String
   var date: Date
 }
