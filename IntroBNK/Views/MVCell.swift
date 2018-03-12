@@ -15,21 +15,12 @@ class MVCell: UICollectionViewCell {
       guard let musicVideo = musicVideo else { return }
       
       name.text = "\(musicVideo.title)\n\(musicVideo.titleThai)"
-      date.text = String(describing: musicVideo.date)
+      cover.image = musicVideo.pic
       
-      guard let urlImage = URL(string: musicVideo.pic) else { return }
-      URLSession.shared.dataTask(with: urlImage) { (data, response, err) in
-        if let err = err {
-          print("Failed to retrieve the image: ", err)
-          return
-        }
-        guard let imageData = data else { return }
-        let image = UIImage(data: imageData)
-        
-        DispatchQueue.main.async {
-          self.cover.image = image
-        }
-      }.resume()
+      let dateFormat = DateFormatter()
+      dateFormat.dateStyle = .long
+      dateFormat.timeStyle = .none
+      date.text = dateFormat.string(from: musicVideo.date)
       
     }
   }
@@ -56,9 +47,18 @@ class MVCell: UICollectionViewCell {
     }
   }
   
+  private let loading: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView()
+    indicator.activityIndicatorViewStyle = .gray
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    indicator.startAnimating()
+    
+    return indicator
+  }()
+  
   private let cover: UIImageView = {
     let image = UIImageView()
-    image.image = #imageLiteral(resourceName: "MVCover")
+    image.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
     image.contentMode = .scaleAspectFill
     image.layer.cornerRadius = 5
     image.clipsToBounds = true
@@ -81,7 +81,7 @@ class MVCell: UICollectionViewCell {
   private let date: UILabel = {
     let date = UILabel()
     date.text = "26 กุมภาพันธ์ 2018"
-    date.font = UIFont(name: "SukhumvitSet-Light", size: 10)
+    date.font = UIFont(name: "SukhumvitSet-Light", size: 12)
     date.textColor = UIColor.grayText
     date.adjustsFontSizeToFitWidth = true
     date.minimumScaleFactor = 0.2
@@ -100,6 +100,14 @@ class MVCell: UICollectionViewCell {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    
+    cover.addSubview(loading)
+    NSLayoutConstraint.activate([
+      loading.centerYAnchor.constraint(equalTo: cover.centerYAnchor),
+      loading.centerXAnchor.constraint(equalTo: cover.centerXAnchor),
+      loading.widthAnchor.constraint(equalToConstant: 50),
+      loading.heightAnchor.constraint(equalToConstant: 50)
+      ])
     
     addSubview(cover)
     NSLayoutConstraint.activate([

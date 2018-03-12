@@ -18,7 +18,7 @@ class MVView: UIView {
     }
   }
   
-  private lazy var webView: UIWebView = {
+  private let webView: UIWebView = {
     let web = UIWebView()
     web.translatesAutoresizingMaskIntoConstraints = false
     

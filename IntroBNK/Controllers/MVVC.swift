@@ -18,22 +18,38 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   func getMVData() {
     db.collection("MusicVideos").getDocuments { (querySnapshot, err) in
       if let err = err {
-        print("Err \(err)")
+        let alert = UIAlertController(title: "พบความผิดพลาด", message: "กรุณาเช็คอินเตอร์เน็ต", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        print("Err: \(err)")
       } else {
         for document in querySnapshot!.documents {
-          let musicVideo = MusicVideo(
-            id: document.documentID,
-            title: document.data()["title"] as! String,
-            titleThai: document.data()["titleThai"] as! String,
-            pic: document.data()["pic"] as! String,
-            link: document.data()["link"] as! String,
-            date: document.data()["date"] as! Date
-          )
-          self.musicVideos.append(musicVideo)
-        }
-        
-        DispatchQueue.main.async {
-          self.collectionView?.reloadData()
+          
+          guard let urlImage = URL(string: document.data()["pic"] as! String) else { return }
+          URLSession.shared.dataTask(with: urlImage) { (data, response, err) in
+            if let err = err {
+              print("Failed to retrieve the image: ", err)
+              return
+            }
+            guard let imageData = data else { return }
+            guard let image = UIImage(data: imageData) else { return }
+            
+            let musicVideo = MusicVideo(
+              id: document.documentID,
+              title: document.data()["title"] as! String,
+              titleThai: document.data()["titleThai"] as! String,
+              pic: image,
+              link: document.data()["link"] as! String,
+              date: document.data()["date"] as! Date
+            )
+            self.musicVideos.append(musicVideo)
+            
+            DispatchQueue.main.async {
+              self.collectionView?.reloadData()
+              self.loading.hidesWhenStopped = true
+              self.loading.stopAnimating()
+            }
+          }.resume()
         }
       }
     }
@@ -41,12 +57,22 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   private let cellID = "MVCell"
   
+  private let loading: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView()
+    indicator.activityIndicatorViewStyle = .gray
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    indicator.startAnimating()
+    
+    return indicator
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     getMVData()
     setupNavigation()
     setupCollectionView()
+    setupLoadingIndicator()
   }
   
   private func setupNavigation() {
@@ -56,6 +82,14 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   private func setupCollectionView() {
     collectionView?.backgroundColor = .white
     collectionView?.register(MVCell.self, forCellWithReuseIdentifier: cellID)
+  }
+  
+  private func setupLoadingIndicator() {
+    collectionView?.addSubview(loading)
+    NSLayoutConstraint.activate([
+      loading.centerXAnchor.constraint(equalTo: (collectionView?.centerXAnchor)!),
+      loading.centerYAnchor.constraint(equalTo: (collectionView?.centerYAnchor)!)
+      ])
   }
   
 }
