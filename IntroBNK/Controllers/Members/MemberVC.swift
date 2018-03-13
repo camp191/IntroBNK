@@ -8,8 +8,14 @@
 
 import UIKit
 
-class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PushNavigationDelegate {
-  
+class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PushNavigationDelegate, FetchImageDelegate {
+
+  var members: [Member]?
+  var memberData: Member? {
+    didSet {
+      titleName = memberData?.nickname
+    }
+  }
   var titleName: String?
   
   private let profileCellName = "ProfileCell"
@@ -17,6 +23,20 @@ class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
   private let headerOther = "HeaderOther"
   
   private let screen = UIScreen.main.bounds
+  
+  func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) {
+    if let urlImage = URL(string: linkImageString) {
+      let task = URLSession.shared.dataTask(with: urlImage, completionHandler: { (data, res, err) in
+        if let err = err {
+          print("Failed to retrieve the image: ", err)
+          return
+        }
+        guard let imageData = data else { return }
+        completion(imageData)
+      })
+      task.resume()
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -79,6 +99,10 @@ extension MemberVC {
     guard let otherCell = collectionView.dequeueReusableCell(withReuseIdentifier: otherCellName, for: indexPath) as? OtherMemberCell else { return UICollectionViewCell() }
     
     otherCell.delegate = self
+    profileCell.delegate = self
+    
+    otherCell.members = members
+    profileCell.memberData = memberData
     
     if indexPath.section == 0 {
       cell = profileCell

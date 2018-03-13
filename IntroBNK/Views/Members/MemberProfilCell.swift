@@ -10,9 +10,32 @@ import UIKit
 
 class MemberProfileCell: UICollectionViewCell {
   
+  var delegate: FetchImageDelegate?
+  
+  var memberData: Member? {
+    didSet {
+      guard let member = memberData else { return }
+      header.text = member.nickname
+      self.delegate?.fetchImageData(linkImageString: member.picBig, completion: { (imageData) in
+        DispatchQueue.main.async {
+          self.pictureMember.image = UIImage(data: imageData)
+          self.name = member.name
+        }
+      })
+      
+    }
+  }
+  
+  var name = "AA"
+  var date = "31 Mar 1994\n"
+  var height = "156 cm\n"
+  var province = "Chonburi\n"
+  var like = "เครื่องสำอาง,น้ำหอม\n"
+  var bloodGroup = "B\n"
+  var hobby = "เล่นเปียโน, นอน, เดินเล่น"
+  
   private let header: UILabel = {
     let text = UILabel()
-    text.text = "แก้ว (Kaew)"
     text.font = UIFont(name: "SukhumvitSet-SemiBold", size: 24)
     text.sizeToFit()
     text.textColor = UIColor.grayText
@@ -31,14 +54,27 @@ class MemberProfileCell: UICollectionViewCell {
     return profileImage
   }()
   
-  private let detailMember: UILabel = {
-    var name = "ณัฐรุจา ชุติวรรณโสภณ\nNatruja Chutiwansopon\n\n"
-    var date = "31 Mar 1994\n"
-    var height = "156 cm\n"
-    var province = "Chonburi\n"
-    var like = "เครื่องสำอาง,น้ำหอม\n"
-    var bloodGroup = "B\n"
-    var hobby = "เล่นเปียโน, นอน, เดินเล่น"
+  private lazy var detailMember: UILabel = {
+    let detail = UILabel()
+    detail.textColor = UIColor.grayText
+    detail.numberOfLines = 9
+    detail.adjustsFontSizeToFitWidth = true
+    detail.minimumScaleFactor = 0.2
+    
+    return detail
+  }()
+  
+  private lazy var detailStack: UIStackView = {
+    let detailStack = UIStackView(arrangedSubviews: [pictureMember, detailMember])
+    detailStack.axis = .horizontal
+    detailStack.spacing = 20
+    detailStack.translatesAutoresizingMaskIntoConstraints = false
+    
+    return detailStack
+  }()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     
     let boldText = [NSAttributedStringKey.font: UIFont(name: "SukhumvitSet-SemiBold", size: 14)!]
     let normalText = [NSAttributedStringKey.font: UIFont(name: "Sukhumvit Set", size: 14)!]
@@ -71,27 +107,7 @@ class MemberProfileCell: UICollectionViewCell {
     nameString.append(hobbyString)
     nameString.append(hobbyDetail)
     
-    let detail = UILabel()
-    detail.attributedText = nameString
-    detail.textColor = UIColor.grayText
-    detail.numberOfLines = 9
-    detail.adjustsFontSizeToFitWidth = true
-    detail.minimumScaleFactor = 0.2
-    
-    return detail
-  }()
-  
-  private lazy var detailStack: UIStackView = {
-    let detailStack = UIStackView(arrangedSubviews: [pictureMember, detailMember])
-    detailStack.axis = .horizontal
-    detailStack.spacing = 20
-    detailStack.translatesAutoresizingMaskIntoConstraints = false
-    
-    return detailStack
-  }()
-  
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+    detailMember.attributedText = nameString
     
     addSubview(header)
     NSLayoutConstraint.activate([

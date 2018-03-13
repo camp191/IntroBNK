@@ -110,7 +110,8 @@ extension MembersVC {
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let layout = UICollectionViewFlowLayout()
     let memberViewController = MemberVC(collectionViewLayout: layout)
-    memberViewController.titleName = members[indexPath.item].nickname
+    memberViewController.memberData = members[indexPath.item]
+    memberViewController.members = members
     navigationController?.pushViewController(memberViewController, animated: true)
   }
   

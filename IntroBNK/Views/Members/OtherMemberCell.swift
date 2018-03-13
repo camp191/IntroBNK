@@ -8,11 +8,26 @@
 
 import UIKit
 
-class OtherMemberCell: UICollectionViewCell {
+class OtherMemberCell: UICollectionViewCell, FetchImageDelegate {
   
+  var members: [Member]?
   var delegate: PushNavigationDelegate?
   
   private let memberCell = "memberCell"
+  
+  internal func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) {
+    if let urlImage = URL(string: linkImageString) {
+      let task = URLSession.shared.dataTask(with: urlImage, completionHandler: { (data, res, err) in
+        if let err = err {
+          print("Failed to retrieve the image: ", err)
+          return
+        }
+        guard let imageData = data else { return }
+        completion(imageData)
+      })
+      task.resume()
+    }
+  }
   
   private let otherMembers: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -70,7 +85,9 @@ extension OtherMemberCell: UICollectionViewDelegate, UICollectionViewDataSource,
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let layout = UICollectionViewFlowLayout()
     let otherMemberViewController = MemberVC(collectionViewLayout: layout)
-    otherMemberViewController.titleName = "Hello"
+    otherMemberViewController.members = members
+    otherMemberViewController.memberData = members?[indexPath.item]
+    otherMemberViewController.titleName = members?[indexPath.item].nickname
     self.delegate?.pushViewController(viewController: otherMemberViewController, animate: true)
   }
   
@@ -83,11 +100,14 @@ extension OtherMemberCell: UICollectionViewDelegate, UICollectionViewDataSource,
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    guard let members = members else { return 0 }
+    return members.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: memberCell, for: indexPath) as? MemberCell else { return UICollectionViewCell() }
+    cell.delegate = self
+    cell.member = members?[indexPath.item]
     
     return cell
   }
