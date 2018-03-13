@@ -30,12 +30,13 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
     let refresher = UIRefreshControl()
     refresher.tintColor = .gray
     refresher.addTarget(self, action: #selector(loadData), for: .valueChanged)
+    refresher.attributedTitle = NSAttributedString(string: "Loading...")
     
     return refresher
   }()
   
   //MARK: - Fetch Data
-  func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) -> Void {
+  internal func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) -> Void {
     if let urlImage = URL(string: linkImageString) {
       let task = URLSession.shared.dataTask(with: urlImage, completionHandler: { (data, res, err) in
         if let err = err {
@@ -58,6 +59,8 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
         print("Err: \(err)")
       }
       
+      self.newsArray = [News]()
+      
       for document in querySnapshot!.documents {
         let news = News(
           id: document.documentID,
@@ -69,6 +72,8 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
         
         self.newsArray.append(news)
       }
+      
+      self.newsArray.reverse()
       
       DispatchQueue.main.async {
         self.collectionView?.reloadData()

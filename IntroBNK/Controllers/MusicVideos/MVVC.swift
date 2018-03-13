@@ -47,6 +47,8 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
           self.musicVideos.append(musicVideo)
         }
         
+        self.musicVideos.reverse()
+        
         DispatchQueue.main.async {
           self.collectionView?.reloadData()
           self.loading.hidesWhenStopped = true
