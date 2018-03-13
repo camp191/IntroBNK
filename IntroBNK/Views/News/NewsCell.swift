@@ -10,23 +10,12 @@ import UIKit
 
 class NewsCell: UICollectionViewCell {
   
+  //MARK: - Variables
   var fetchPictureDelegate: FetchImageDelegate?
   
   var news: News? {
     didSet {
       guard let news = news else { return }
-      
-      let dateFormat = DateFormatter()
-      dateFormat.dateStyle = .long
-      dateFormat.timeStyle = .none
-      let date = dateFormat.string(from: news.date)
-      
-      let timeFormat = DateFormatter()
-      timeFormat.dateStyle = .long
-      timeFormat.timeStyle = .long
-      let time = dateFormat.string(from: news.date)
-      
-      detail.text = "\(news.title)\n\(date)\n\(time)\n\(news.place)"
       
       fetchPictureDelegate?.fetchImageData(linkImageString: news.pic, completion: { (imageData) in
         DispatchQueue.main.async {
@@ -35,9 +24,20 @@ class NewsCell: UICollectionViewCell {
           self.loading.hidesWhenStopped = true
         }
       })
+      
+      let dateFormat = DateFormatter()
+      dateFormat.dateFormat = "dd MMMM yyyy"
+      let date = dateFormat.string(from: news.date)
+      
+      let timeFormat = DateFormatter()
+      timeFormat.dateFormat = "HH.mm"
+      let time = "เวลา \(timeFormat.string(from: news.date)) น."
+      
+      detail.text = "\(news.title)\n\(date)\n\(time)\n\(news.place)"
     }
   }
   
+  //MARK: - Animation State
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
@@ -60,6 +60,7 @@ class NewsCell: UICollectionViewCell {
     }
   }
   
+  //MARK: - UI Components
   private let loading: UIActivityIndicatorView = {
     let indicator = UIActivityIndicatorView()
     indicator.activityIndicatorViewStyle = .gray
@@ -113,6 +114,7 @@ class NewsCell: UICollectionViewCell {
     return roundedView
   }()
   
+  //MARK: - Init View
   override init(frame: CGRect) {
     super.init(frame: frame)
     

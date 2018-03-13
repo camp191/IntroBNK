@@ -11,11 +11,12 @@ import Firebase
 
 class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, FetchImageDelegate {
   
+  //MARK: - Variables
   private var musicVideos = [MusicVideo]()
-  
   private let db = Firestore.firestore()
   private let cellID = "MVCell"
   
+  //MARK: - UI Component
   private let loading: UIActivityIndicatorView = {
     let indicator = UIActivityIndicatorView()
     indicator.activityIndicatorViewStyle = .gray
@@ -25,6 +26,7 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
     return indicator
   }()
   
+  //MARK: - Fetch Data
   func getMVData() {
     db.collection("MusicVideos").getDocuments { (querySnapshot, err) in
       if let err = err {
@@ -68,6 +70,7 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
     }
   }
   
+  //MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -77,6 +80,7 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
     setupLoadingIndicator()
   }
   
+  //MARK: - Setup UI Function
   private func setupNavigation() {
     navigationItem.title = "Music Videos"
   }

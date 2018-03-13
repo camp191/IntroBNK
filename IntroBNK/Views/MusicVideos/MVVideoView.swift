@@ -10,6 +10,7 @@ import UIKit
 
 class MVVideoView: UIView {
   
+  //MARK: - Variable
   var mvLink: String? {
     didSet {
       guard let mvLink = mvLink else { return }
@@ -18,6 +19,7 @@ class MVVideoView: UIView {
     }
   }
   
+  //MARK: - UI Component
   private let webView: UIWebView = {
     let web = UIWebView()
     web.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +27,7 @@ class MVVideoView: UIView {
     return web
   }()
   
+  //MARK: - Init View
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubview(webView)

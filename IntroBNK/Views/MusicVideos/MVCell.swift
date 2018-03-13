@@ -10,6 +10,7 @@ import UIKit
 
 class MVCell: UICollectionViewCell {
   
+  //MARK: - Variables
   var fetchPictureDelegate: FetchImageDelegate?
   
   var musicVideo: MusicVideo? {
@@ -24,15 +25,16 @@ class MVCell: UICollectionViewCell {
         }
       })
       
+      
       name.text = "\(musicVideo.title)\n\(musicVideo.titleThai)"
       let dateFormat = DateFormatter()
-      dateFormat.dateStyle = .long
-      dateFormat.timeStyle = .none
+      dateFormat.dateFormat = "dd MMMM yyyy"
       date.text = dateFormat.string(from: musicVideo.date)
       
     }
   }
   
+  //MARK: - State Animation
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
@@ -55,6 +57,7 @@ class MVCell: UICollectionViewCell {
     }
   }
   
+  //MARK: - UI Components
   private let loading: UIActivityIndicatorView = {
     let indicator = UIActivityIndicatorView()
     indicator.activityIndicatorViewStyle = .gray
@@ -88,7 +91,6 @@ class MVCell: UICollectionViewCell {
   
   private let date: UILabel = {
     let date = UILabel()
-    date.text = "26 กุมภาพันธ์ 2018"
     date.font = UIFont(name: "SukhumvitSet-Light", size: 12)
     date.textColor = UIColor.grayText
     date.adjustsFontSizeToFitWidth = true
@@ -106,6 +108,7 @@ class MVCell: UICollectionViewCell {
     return stack
   }()
   
+  //MARK: - Init View
   override init(frame: CGRect) {
     super.init(frame: frame)
     

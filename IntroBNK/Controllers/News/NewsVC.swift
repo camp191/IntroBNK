@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, FetchImageDelegate {
-  
+
   //MARK: - Variables
   private var newsArray = [News]()
   private let newCell = "NewID"
@@ -35,7 +35,7 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
   }()
   
   //MARK: - Fetch Data
-  internal func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) -> Void {
+  func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) -> Void {
     if let urlImage = URL(string: linkImageString) {
       let task = URLSession.shared.dataTask(with: urlImage, completionHandler: { (data, res, err) in
         if let err = err {
@@ -84,11 +84,14 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    fetchNewsData()
     setupRefresher()
     setupNavigation()
     setupCollectionView()
     setupLoadingIndicator()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    fetchNewsData()
   }
   
   // MARK: - Refresh Function
@@ -140,9 +143,8 @@ extension NewsVC {
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newCell, for: indexPath) as? NewsCell else { return UICollectionViewCell() }
-    cell.news = newsArray[indexPath.item]
     cell.fetchPictureDelegate = self
-    cell.layoutIfNeeded()
+    cell.news = newsArray[indexPath.item]
     
     return cell
   }
