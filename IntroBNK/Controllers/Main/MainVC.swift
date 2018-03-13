@@ -10,6 +10,7 @@ import UIKit
 
 class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
+  // MARK: - Variables
   private let mainItems = [
     Main(mainImage: "News"),
     Main(mainImage: "Members"),
@@ -17,6 +18,7 @@ class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   ]
   private let mainCellIdentifier = "CellID"
   
+  // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -25,6 +27,7 @@ class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
   }
   
+  // MARK: - Setup UI Function
   private func setupConllectionView() {
     collectionView?.backgroundColor = .white
     collectionView?.register(MainCell.self, forCellWithReuseIdentifier: mainCellIdentifier)

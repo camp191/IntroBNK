@@ -10,6 +10,7 @@ import UIKit
 
 class MVVideoVC: UIViewController {
   
+  // MARK: - Variables
   var mvLink: String? {
     didSet {
       webView.mvLink = mvLink
@@ -19,6 +20,7 @@ class MVVideoVC: UIViewController {
   private let screen = UIScreen.main.bounds
   private let webView = MVVideoView()
 
+  // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white

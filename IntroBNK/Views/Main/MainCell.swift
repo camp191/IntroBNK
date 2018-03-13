@@ -17,6 +17,7 @@ class MainCell: UICollectionViewCell {
     }
   }
   
+  //MARK: - Animation State
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
@@ -39,6 +40,7 @@ class MainCell: UICollectionViewCell {
     }
   }
   
+  //MARK: - UI Component
   private let mainImage: UIImageView = {
     let image = UIImageView()
     image.contentMode = UIViewContentMode.scaleAspectFit
@@ -50,6 +52,7 @@ class MainCell: UICollectionViewCell {
     return image
   }()
   
+  //MARK: - Init View
   override init(frame: CGRect) {
     super.init(frame: frame)
     

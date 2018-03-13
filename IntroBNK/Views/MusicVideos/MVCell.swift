@@ -34,7 +34,7 @@ class MVCell: UICollectionViewCell {
     }
   }
   
-  //MARK: - State Animation
+  //MARK: - Animation State
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {

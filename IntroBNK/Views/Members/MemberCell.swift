@@ -10,6 +10,22 @@ import UIKit
 
 class MemberCell: UICollectionViewCell {
   
+  var delegate: FetchImageDelegate?
+  
+  var member: Member? {
+    didSet {
+      guard let member = member else { return }
+      name.text = member.nickname
+      
+      self.delegate?.fetchImageData(linkImageString: member.picSmall, completion: { (imageData) in
+        DispatchQueue.main.async {
+          self.image.image = UIImage(data: imageData)
+          self.loading.stopAnimating()
+        }
+      })
+    }
+  }
+  
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
@@ -32,9 +48,19 @@ class MemberCell: UICollectionViewCell {
     }
   }
   
+  private let loading: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView()
+    indicator.activityIndicatorViewStyle = .gray
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    indicator.hidesWhenStopped = true
+    indicator.startAnimating()
+    
+    return indicator
+  }()
+  
   private let image: UIImageView = {
     let image = UIImageView()
-    image.image = #imageLiteral(resourceName: "Kaew")
+    image.backgroundColor = .coverGray
     image.contentMode = UIViewContentMode.scaleAspectFit
     image.layer.cornerRadius = 5
     image.clipsToBounds = true
@@ -45,10 +71,11 @@ class MemberCell: UICollectionViewCell {
   
   private let name: UILabel = {
     let label = UILabel()
-    label.text = "แก้ว (Kaew)"
     label.font = UIFont(name: "Sukhumvit Set", size: 12)
     label.textAlignment = .center
     label.textColor = UIColor.grayText
+    label.adjustsFontSizeToFitWidth = true
+    label.minimumScaleFactor = 0.2
     label.sizeToFit()
     
     return label
@@ -68,13 +95,21 @@ class MemberCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
+    image.addSubview(loading)
+    NSLayoutConstraint.activate([
+      loading.centerYAnchor.constraint(equalTo: image.centerYAnchor),
+      loading.centerXAnchor.constraint(equalTo: image.centerXAnchor),
+      loading.widthAnchor.constraint(equalToConstant: 50),
+      loading.heightAnchor.constraint(equalToConstant: 50)
+      ])
+    
     roundedView.addSubview(image)
     image.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width)
 
     addSubview(roundedView)
     
     addSubview(name)
-    name.frame = CGRect(x: 0, y: frame.width + 15, width: frame.width, height: 10)
+    name.frame = CGRect(x: 0, y: frame.width + 15, width: frame.width, height: 15)
   }
   
   required init?(coder aDecoder: NSCoder) {
