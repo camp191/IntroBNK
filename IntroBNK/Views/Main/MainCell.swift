@@ -10,6 +10,7 @@ import UIKit
 
 class MainCell: UICollectionViewCell {
   
+  //MARK: - Variables
   var mainData: Main? {
     didSet {
       guard let mainData = mainData else { return }

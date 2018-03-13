@@ -10,6 +10,7 @@ import UIKit
 
 class MemberProfileCell: UICollectionViewCell {
   
+  //MARK: - Variables
   var delegate: FetchImageDelegate?
   
   var memberData: Member? {
@@ -29,6 +30,7 @@ class MemberProfileCell: UICollectionViewCell {
     }
   }
   
+  //MARK: - UI Components
   private let loading: UIActivityIndicatorView = {
     let indicator = UIActivityIndicatorView()
     indicator.activityIndicatorViewStyle = .gray
@@ -75,6 +77,7 @@ class MemberProfileCell: UICollectionViewCell {
     return detailStack
   }()
   
+  //MARK: - Init View
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -85,6 +88,7 @@ class MemberProfileCell: UICollectionViewCell {
       ])
   }
   
+  //MARK: - Setup View Function
   func setupDetailStack(member: Member) {
     setupDetailLabel(member: member)
     

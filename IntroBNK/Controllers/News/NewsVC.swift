@@ -36,20 +36,6 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
   }()
   
   //MARK: - Fetch Data
-  internal func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) -> Void {
-    if let urlImage = URL(string: linkImageString) {
-      let task = URLSession.shared.dataTask(with: urlImage, completionHandler: { (data, res, err) in
-        if let err = err {
-          print("Failed to retrieve the image: ", err)
-          return
-        }
-        guard let imageData = data else { return }
-        completion(imageData)
-      })
-      task.resume()
-    }
-  }
-  
   private func fetchNewsData() {
     db.collection("News").getDocuments { (querySnapshot, err) in
       if let err = err {

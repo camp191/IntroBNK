@@ -10,6 +10,7 @@ import UIKit
 
 class MemberCell: UICollectionViewCell {
   
+  //MARK: - Variables
   var delegate: FetchImageDelegate?
   
   var member: Member? {
@@ -26,6 +27,7 @@ class MemberCell: UICollectionViewCell {
     }
   }
   
+  //MARK: - Animation State
   override var isHighlighted: Bool {
     didSet {
       if isHighlighted {
@@ -48,6 +50,7 @@ class MemberCell: UICollectionViewCell {
     }
   }
   
+  //MARK: - UI Components
   private let loading: UIActivityIndicatorView = {
     let indicator = UIActivityIndicatorView()
     indicator.activityIndicatorViewStyle = .gray
@@ -92,6 +95,7 @@ class MemberCell: UICollectionViewCell {
     return roundedView
   }()
   
+  //MARK: - Init View
   override init(frame: CGRect) {
     super.init(frame: frame)
     

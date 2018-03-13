@@ -10,6 +10,7 @@ import UIKit
 
 class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PushNavigationDelegate, FetchImageDelegate {
 
+  //MARK: - Variables
   var members: [Member]?
   var memberData: Member? {
     didSet {
@@ -24,20 +25,7 @@ class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
   
   private let screen = UIScreen.main.bounds
   
-  func fetchImageData(linkImageString: String, completion: @escaping (Data) -> Void) {
-    if let urlImage = URL(string: linkImageString) {
-      let task = URLSession.shared.dataTask(with: urlImage, completionHandler: { (data, res, err) in
-        if let err = err {
-          print("Failed to retrieve the image: ", err)
-          return
-        }
-        guard let imageData = data else { return }
-        completion(imageData)
-      })
-      task.resume()
-    }
-  }
-  
+  //MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -46,6 +34,7 @@ class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
   }
   
+  //MARK: - UI Setup Function
   func setupNavigation() {
     navigationItem.title = titleName
   }
@@ -56,6 +45,7 @@ class MemberVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     collectionView?.register(OtherMemberCell.self, forCellWithReuseIdentifier: otherCellName)
   }
   
+  //MARK: - Delegate Function
   func pushViewController(viewController: UIViewController, animate: Bool) {
     navigationController?.pushViewController(viewController, animated: animate)
   }
