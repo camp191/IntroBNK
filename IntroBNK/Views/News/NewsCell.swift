@@ -21,7 +21,6 @@ class NewsCell: UICollectionViewCell {
         DispatchQueue.main.async {
           self.pictureFrame.image = UIImage(data: imageData)
           self.loading.stopAnimating()
-          self.loading.hidesWhenStopped = true
         }
       })
       
@@ -65,6 +64,7 @@ class NewsCell: UICollectionViewCell {
     let indicator = UIActivityIndicatorView()
     indicator.activityIndicatorViewStyle = .gray
     indicator.translatesAutoresizingMaskIntoConstraints = false
+    indicator.hidesWhenStopped = true
     indicator.startAnimating()
     
     return indicator

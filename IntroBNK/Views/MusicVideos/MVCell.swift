@@ -21,10 +21,8 @@ class MVCell: UICollectionViewCell {
         DispatchQueue.main.async {
           self.cover.image = UIImage(data: imageData)
           self.loading.stopAnimating()
-          self.loading.hidesWhenStopped = true
         }
       })
-      
       
       name.text = "\(musicVideo.title)\n\(musicVideo.titleThai)"
       let dateFormat = DateFormatter()
@@ -62,6 +60,7 @@ class MVCell: UICollectionViewCell {
     let indicator = UIActivityIndicatorView()
     indicator.activityIndicatorViewStyle = .gray
     indicator.translatesAutoresizingMaskIntoConstraints = false
+    indicator.hidesWhenStopped = true
     indicator.startAnimating()
     
     return indicator

@@ -16,23 +16,28 @@ class MemberProfileCell: UICollectionViewCell {
     didSet {
       guard let member = memberData else { return }
       header.text = member.nickname
+      
+      setupDetailStack(member: member)
+      setupLoading()
+      
       self.delegate?.fetchImageData(linkImageString: member.picBig, completion: { (imageData) in
         DispatchQueue.main.async {
           self.pictureMember.image = UIImage(data: imageData)
-          self.name = member.name
+          self.loading.stopAnimating()
         }
       })
-      
     }
   }
   
-  var name = "AA"
-  var date = "31 Mar 1994\n"
-  var height = "156 cm\n"
-  var province = "Chonburi\n"
-  var like = "เครื่องสำอาง,น้ำหอม\n"
-  var bloodGroup = "B\n"
-  var hobby = "เล่นเปียโน, นอน, เดินเล่น"
+  private let loading: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView()
+    indicator.activityIndicatorViewStyle = .gray
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    indicator.hidesWhenStopped = true
+    indicator.startAnimating()
+    
+    return indicator
+  }()
   
   private let header: UILabel = {
     let text = UILabel()
@@ -46,7 +51,6 @@ class MemberProfileCell: UICollectionViewCell {
   
   private let pictureMember: UIImageView = {
     let profileImage = UIImageView()
-    profileImage.image = #imageLiteral(resourceName: "KaewH")
     profileImage.contentMode = .scaleAspectFit
     profileImage.translatesAutoresizingMaskIntoConstraints = false
     profileImage.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 30) / 2.3).isActive = true
@@ -57,9 +61,7 @@ class MemberProfileCell: UICollectionViewCell {
   private lazy var detailMember: UILabel = {
     let detail = UILabel()
     detail.textColor = UIColor.grayText
-    detail.numberOfLines = 9
-    detail.adjustsFontSizeToFitWidth = true
-    detail.minimumScaleFactor = 0.2
+    detail.numberOfLines = 11
     
     return detail
   }()
@@ -76,23 +78,55 @@ class MemberProfileCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
+    addSubview(header)
+    NSLayoutConstraint.activate([
+      header.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+      header.topAnchor.constraint(equalTo: self.topAnchor, constant: 20)
+      ])
+  }
+  
+  func setupDetailStack(member: Member) {
+    setupDetailLabel(member: member)
+    
+    addSubview(detailStack)
+    NSLayoutConstraint.activate([
+      detailStack.topAnchor.constraint(equalTo: header.bottomAnchor),
+      detailStack.leftAnchor.constraint(equalTo: leftAnchor),
+      detailStack.rightAnchor.constraint(equalTo: rightAnchor),
+      detailStack.heightAnchor.constraint(equalToConstant: 270)
+      ])
+  }
+  
+  func setupLoading() {
+    pictureMember.addSubview(loading)
+    NSLayoutConstraint.activate([
+      loading.centerXAnchor.constraint(equalTo: pictureMember.centerXAnchor),
+      loading.centerYAnchor.constraint(equalTo: pictureMember.centerYAnchor)
+      ])
+  }
+  
+  func setupDetailLabel(member: Member) {
+    let dateFormat = DateFormatter()
+    dateFormat.dateFormat = "dd MMM yyyy"
+    let date = dateFormat.string(from: member.dateOfBirth)
+    
     let boldText = [NSAttributedStringKey.font: UIFont(name: "SukhumvitSet-SemiBold", size: 14)!]
     let normalText = [NSAttributedStringKey.font: UIFont(name: "Sukhumvit Set", size: 14)!]
     
-    let nameString = NSMutableAttributedString(string: name, attributes: boldText)
-    let dateString = NSMutableAttributedString(string: "Date of birth: ", attributes: boldText)
+    let nameString = NSMutableAttributedString(string: "\(member.name)\n\(member.nameEng)\n\n", attributes: boldText)
+    let dateString = NSMutableAttributedString(string: "Birthday: ", attributes: boldText)
     let heightString = NSMutableAttributedString(string: "Height: ", attributes: boldText)
     let provinceString = NSMutableAttributedString(string: "Province: ", attributes: boldText)
     let likeString = NSMutableAttributedString(string: "Like: ", attributes: boldText)
     let bloodGroupString = NSMutableAttributedString(string: "Blood Group: ", attributes: boldText)
     let hobbyString = NSMutableAttributedString(string: "Hobby: ", attributes: boldText)
     
-    let dateDetail = NSMutableAttributedString(string: date, attributes: normalText)
-    let heightDetail = NSMutableAttributedString(string: height, attributes: normalText)
-    let provinceDetail = NSMutableAttributedString(string: province, attributes: normalText)
-    let likeDetail = NSMutableAttributedString(string: like, attributes: normalText)
-    let bloodGroupDetail = NSMutableAttributedString(string: bloodGroup, attributes: normalText)
-    let hobbyDetail = NSMutableAttributedString(string: hobby, attributes: normalText)
+    let dateDetail = NSMutableAttributedString(string: "\(date)\n", attributes: normalText)
+    let heightDetail = NSMutableAttributedString(string: "\(member.height) ซม.\n", attributes: normalText)
+    let provinceDetail = NSMutableAttributedString(string: "\(member.province)\n", attributes: normalText)
+    let likeDetail = NSMutableAttributedString(string: "\(member.like)\n", attributes: normalText)
+    let bloodGroupDetail = NSMutableAttributedString(string: "\(member.bloodGroup)\n", attributes: normalText)
+    let hobbyDetail = NSMutableAttributedString(string: "\(member.hobby)", attributes: normalText)
     
     nameString.append(dateString)
     nameString.append(dateDetail)
@@ -107,21 +141,7 @@ class MemberProfileCell: UICollectionViewCell {
     nameString.append(hobbyString)
     nameString.append(hobbyDetail)
     
-    detailMember.attributedText = nameString
-    
-    addSubview(header)
-    NSLayoutConstraint.activate([
-      header.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-      header.topAnchor.constraint(equalTo: self.topAnchor, constant: 20)
-      ])
-    
-    addSubview(detailStack)
-    NSLayoutConstraint.activate([
-      detailStack.topAnchor.constraint(equalTo: header.bottomAnchor),
-      detailStack.leftAnchor.constraint(equalTo: self.leftAnchor),
-      detailStack.rightAnchor.constraint(equalTo: self.rightAnchor),
-      detailStack.heightAnchor.constraint(equalToConstant: 270)
-      ])
+    self.detailMember.attributedText = nameString
   }
   
   required init?(coder aDecoder: NSCoder) {
