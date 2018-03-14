@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, FetchImageDelegate {
   
@@ -28,40 +27,28 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
   
   //MARK: - Fetch Data
   func getMVData() {
-    db.collection("MusicVideos").getDocuments { (querySnapshot, err) in
-      if let err = err {
-        let alert = UIAlertController(title: "พบความผิดพลาด", message: "กรุณาเช็คอินเตอร์เน็ต", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        print("Err: \(err)")
-      } else {
-        for document in querySnapshot!.documents {
-          guard let title = document.data()["title"] as? String else { return }
-          guard let titleThai = document.data()["titleThai"] as? String else { return }
-          guard let pic = document.data()["pic"] as? String else { return }
-          guard let link = document.data()["link"] as? String else { return }
-          guard let date = document.data()["date"] as? Date else { return }
-          
-          let musicVideo = MusicVideo(
-            id: document.documentID,
-            title: title,
-            titleThai: titleThai,
-            pic: pic,
-            link: link,
-            date: date
-          )
-          self.musicVideos.append(musicVideo)
-        }
-        
-        self.musicVideos.reverse()
-        
-        DispatchQueue.main.async {
-          self.collectionView?.reloadData()
-          self.loading.hidesWhenStopped = true
-          self.loading.stopAnimating()
-        }
+    APIService.shared.getFireStoreData(from: "MusicVideos") { (queryDocuments) in
+      for document in queryDocuments {
+        let musicVideo = MusicVideo(
+          id: document.documentID,
+          title: document.data()["title"] as? String ?? "-",
+          titleThai: document.data()["titleThai"] as? String ?? "-",
+          pic: document.data()["pic"] as? String ?? "",
+          link: document.data()["link"] as? String ?? "",
+          date: document.data()["date"] as? Date ?? Date()
+        )
+        self.musicVideos.append(musicVideo)
+      }
+      
+      self.musicVideos.reverse()
+      
+      DispatchQueue.main.async {
+        self.collectionView?.reloadData()
+        self.loading.hidesWhenStopped = true
+        self.loading.stopAnimating()
       }
     }
+
   }
   
   //MARK: - Life Cycle

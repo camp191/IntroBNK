@@ -7,20 +7,19 @@
 //
 
 import UIKit
-import Firebase
 
 class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, FetchImageDelegate {
 
   //MARK: - Variables
   private var newsArray = [News]()
   private let newCell = "NewID"
-  private let db = Firestore.firestore()
   
   //MARK: - UI Components
   private let loading: UIActivityIndicatorView = {
     let indicator = UIActivityIndicatorView()
     indicator.activityIndicatorViewStyle = .gray
     indicator.translatesAutoresizingMaskIntoConstraints = false
+    indicator.hidesWhenStopped = true
     indicator.startAnimating()
     
     return indicator
@@ -37,30 +36,17 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
   
   //MARK: - Fetch Data
   private func fetchNewsData() {
-    db.collection("News").getDocuments { (querySnapshot, err) in
-      if let err = err {
-        let alert = UIAlertController(title: "พบความผิดพลาด", message: "กรุณาเช็คอินเตอร์เน็ต", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        print("Err: \(err)")
-      }
-      
+    APIService.shared.getFireStoreData(from: "News") { (queryDocuments) in
       self.newsArray = [News]()
       
-      for document in querySnapshot!.documents {
-        guard let title = document.data()["title"] as? String else { return }
-        guard let place = document.data()["place"] as? String else { return }
-        guard let pic = document.data()["pic"] as? String else { return }
-        guard let date = document.data()["date"] as? Date else { return }
-        
+      for document in queryDocuments {
         let news = News(
           id: document.documentID,
-          title: title,
-          place: place,
-          pic: pic,
-          date: date
+          title: document.data()["title"] as? String ?? "-",
+          place: document.data()["place"] as? String ?? "-",
+          pic: document.data()["pic"] as? String ?? "",
+          date: document.data()["date"] as? Date ?? Date()
         )
-        
         self.newsArray.append(news)
       }
       
@@ -69,10 +55,8 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
       DispatchQueue.main.async {
         self.collectionView?.reloadData()
         self.loading.stopAnimating()
-        self.loading.hidesWhenStopped = true
         self.stopRefresher()
       }
-      
     }
   }
   
