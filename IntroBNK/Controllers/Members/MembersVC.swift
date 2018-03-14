@@ -37,19 +37,31 @@ class MembersVC: UICollectionViewController, UICollectionViewDelegateFlowLayout,
         print("Err: \(err)")
       } else {
         for document in querySnapshot!.documents {
+          guard let name = document.data()["name"] as? String else { return }
+          guard let nameEng = document.data()["nameEng"] as? String else { return }
+          guard let nickname = document.data()["nickname"] as? String else { return }
+          guard let picBig = document.data()["picBig"] as? String else { return }
+          guard let picSmall = document.data()["picSmall"] as? String else { return }
+          guard let province = document.data()["province"] as? String else { return }
+          guard let bloodGroup = document.data()["bloodGroup"] as? String else { return }
+          guard let dateOfBirth = document.data()["dateOfBirth"] as? Date else { return }
+          guard let height = document.data()["height"] as? Int else { return }
+          guard let hobby = document.data()["hobby"] as? String else { return }
+          guard let like = document.data()["like"] as? String else { return }
+          
           let member = Member(
             id: document.documentID,
-            name: document.data()["name"] as! String,
-            nameEng: document.data()["nameEng"] as! String,
-            nickname: document.data()["nickname"] as! String,
-            picBig: document.data()["picBig"] as! String,
-            picSmall: document.data()["picSmall"] as! String,
-            province: document.data()["province"] as! String,
-            bloodGroup: document.data()["bloodGroup"] as! String,
-            dateOfBirth: document.data()["dateOfBirth"] as! Date,
-            height: document.data()["height"] as! Int,
-            hobby: document.data()["hobby"] as! String,
-            like: document.data()["like"] as! String
+            name: name,
+            nameEng: nameEng,
+            nickname: nickname,
+            picBig: picBig,
+            picSmall: picSmall,
+            province: province,
+            bloodGroup: bloodGroup,
+            dateOfBirth: dateOfBirth,
+            height: height,
+            hobby: hobby,
+            like: like
           )
           self.members.append(member)
           

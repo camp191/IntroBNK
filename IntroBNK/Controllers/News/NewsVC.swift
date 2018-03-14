@@ -48,12 +48,17 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fe
       self.newsArray = [News]()
       
       for document in querySnapshot!.documents {
+        guard let title = document.data()["title"] as? String else { return }
+        guard let place = document.data()["place"] as? String else { return }
+        guard let pic = document.data()["pic"] as? String else { return }
+        guard let date = document.data()["date"] as? Date else { return }
+        
         let news = News(
           id: document.documentID,
-          title: document.data()["title"] as! String,
-          place: document.data()["place"] as! String,
-          pic: document.data()["pic"] as! String,
-          date: document.data()["date"] as! Date
+          title: title,
+          place: place,
+          pic: pic,
+          date: date
         )
         
         self.newsArray.append(news)

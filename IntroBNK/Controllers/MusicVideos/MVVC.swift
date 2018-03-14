@@ -36,13 +36,19 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
         print("Err: \(err)")
       } else {
         for document in querySnapshot!.documents {
+          guard let title = document.data()["title"] as? String else { return }
+          guard let titleThai = document.data()["titleThai"] as? String else { return }
+          guard let pic = document.data()["pic"] as? String else { return }
+          guard let link = document.data()["link"] as? String else { return }
+          guard let date = document.data()["date"] as? Date else { return }
+          
           let musicVideo = MusicVideo(
             id: document.documentID,
-            title: document.data()["title"] as! String,
-            titleThai: document.data()["titleThai"] as! String,
-            pic: document.data()["pic"] as! String,
-            link: document.data()["link"] as! String,
-            date: document.data()["date"] as! Date
+            title: title,
+            titleThai: titleThai,
+            pic: pic,
+            link: link,
+            date: date
           )
           self.musicVideos.append(musicVideo)
         }

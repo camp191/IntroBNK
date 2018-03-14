@@ -91,7 +91,6 @@ class NewsCell: UICollectionViewCell {
   
   private let detail: UILabel = {
     let text = UILabel()
-    text.text = "วาเลนไทน์นี้เจอกันที่งาน “ปล่อย”\n14 กุมภาพันธ์ 2018\nเวลา 17.00 - 22.00 น.\nMain Stadium มหาวิทยาลัยธรรมศาสตร์ รังสิต"
     text.numberOfLines = 5
     text.font = UIFont(name: "Sukhumvit Set", size: 14)
     text.textColor = UIColor.grayText
