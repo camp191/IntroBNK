@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct MusicVideo {
   var id: String
@@ -15,4 +16,13 @@ struct MusicVideo {
   var pic: String
   var link: String
   var date: Date
+  
+  init(document: DocumentSnapshot) {
+    self.id = document.documentID
+    self.title = document.data()["title"] as? String ?? "-"
+    self.titleThai = document.data()["titleThai"] as? String ?? "-"
+    self.pic = document.data()["pic"] as? String ?? ""
+    self.link = document.data()["link"] as? String ?? ""
+    self.date = document.data()["date"] as? Date ?? Date()
+  }
 }

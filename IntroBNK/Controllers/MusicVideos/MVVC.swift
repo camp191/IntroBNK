@@ -12,7 +12,6 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
   
   //MARK: - Variables
   private var musicVideos = [MusicVideo]()
-  private let db = Firestore.firestore()
   private let cellID = "MVCell"
   
   //MARK: - UI Component
@@ -29,14 +28,7 @@ class MVVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, Fetc
   func getMVData() {
     APIService.shared.getFireStoreData(from: "MusicVideos") { (queryDocuments) in
       for document in queryDocuments {
-        let musicVideo = MusicVideo(
-          id: document.documentID,
-          title: document.data()["title"] as? String ?? "-",
-          titleThai: document.data()["titleThai"] as? String ?? "-",
-          pic: document.data()["pic"] as? String ?? "",
-          link: document.data()["link"] as? String ?? "",
-          date: document.data()["date"] as? Date ?? Date()
-        )
+        let musicVideo = MusicVideo(document: document)
         self.musicVideos.append(musicVideo)
       }
       

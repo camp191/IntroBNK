@@ -12,7 +12,6 @@ class MembersVC: UICollectionViewController, UICollectionViewDelegateFlowLayout,
 
   //MARK: - Variables
   private let cellMemberView = "CellID"
-  private let db = Firestore.firestore()
   private var members = [Member]()
   
   //MARK: - UI Component
@@ -30,26 +29,13 @@ class MembersVC: UICollectionViewController, UICollectionViewDelegateFlowLayout,
   private func fetchAllMembersData() {
     APIService.shared.getFireStoreData(from: "Members") { (queryDocuments) in
       for document in queryDocuments {
-        let member = Member(
-          id: document.documentID,
-          name: document.data()["name"] as? String ?? "",
-          nameEng: document.data()["nameEng"] as? String ?? "",
-          nickname: document.data()["nickname"] as? String ?? "-",
-          picBig: document.data()["picBig"] as? String ?? "",
-          picSmall: document.data()["picSmall"] as? String ?? "",
-          province: document.data()["province"] as? String ?? "-",
-          bloodGroup: document.data()["bloodGroup"] as? String ?? "-",
-          dateOfBirth: document.data()["dateOfBirth"] as? Date ?? Date(),
-          height: document.data()["height"] as? Int ?? 0,
-          hobby: document.data()["hobby"] as? String ?? "-",
-          like: document.data()["like"] as? String ?? "-"
-        )
+        let member = Member(document: document)
         self.members.append(member)
-        
-        DispatchQueue.main.async {
-          self.collectionView?.reloadData()
-          self.loading.stopAnimating()
-        }
+      }
+      
+      DispatchQueue.main.async {
+        self.collectionView?.reloadData()
+        self.loading.stopAnimating()
       }
     }
   }

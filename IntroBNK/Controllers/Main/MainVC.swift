@@ -37,26 +37,24 @@ class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     navigationItem.title = "BNK48"
   }
   
+  private func createAndPushCollectionViewPage(with viewController: UICollectionViewController, line spaceing: CGFloat) {
+    let layout = UICollectionViewFlowLayout()
+    layout.minimumLineSpacing = spaceing
+    navigationController?.pushViewController(viewController, animated: true)
+  }
 }
 
 extension MainVC {
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let layout = UICollectionViewFlowLayout()
+    
     switch indexPath.row {
     case 0:
-      let layout = UICollectionViewFlowLayout()
-      let newsController = NewsVC(collectionViewLayout: layout)
-      layout.minimumLineSpacing = 27
-      navigationController?.pushViewController(newsController, animated: true)
+      createAndPushCollectionViewPage(with: NewsVC(collectionViewLayout: layout), line: 27)
     case 1:
-      let layout = UICollectionViewFlowLayout()
-      let membersController = MembersVC(collectionViewLayout: layout)
-      layout.minimumLineSpacing = 27
-      navigationController?.pushViewController(membersController, animated: true)
+      createAndPushCollectionViewPage(with: MembersVC(collectionViewLayout: layout), line: 27)
     case 2:
-      let layout = UICollectionViewFlowLayout()
-      let mvController = MVVC(collectionViewLayout: layout)
-      layout.minimumLineSpacing = 24
-      navigationController?.pushViewController(mvController, animated: true)
+      createAndPushCollectionViewPage(with: MVVC(collectionViewLayout: layout), line: 24)
     default:
       let aleart = UIAlertController(title: "Error!!", message: "Please try again", preferredStyle: .alert)
       aleart.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

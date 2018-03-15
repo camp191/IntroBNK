@@ -102,6 +102,7 @@
 			children = (
 				D0215A8C2056C42A003256CF /* Protocols.swift */,
 				D002847320512DF10004C372 /* Library.swift */,
+				D0E2F1DF2049490900411F1C /* AppDelegate.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -197,13 +198,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		D0912E96204EE2F900B7B665 /* Singletons */ = {
+		D0912E96204EE2F900B7B665 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				D0E2F1DF2049490900411F1C /* AppDelegate.swift */,
 				D09DB0A920594ADE007B107C /* APIService.swift */,
 			);
-			path = Singletons;
+			path = APIs;
 			sourceTree = "<group>";
 		};
 		D0912E97204EE30400B7B665 /* Views */ = {
@@ -250,7 +250,7 @@
 				D002847220512DE50004C372 /* SupportingFiles */,
 				D0912E98204EE31000B7B665 /* Fonts */,
 				D0912E97204EE30400B7B665 /* Views */,
-				D0912E96204EE2F900B7B665 /* Singletons */,
+				D0912E96204EE2F900B7B665 /* APIs */,
 				D0912E95204EE2E900B7B665 /* Controllers */,
 				D0E2F1E62049490900411F1C /* Assets.xcassets */,
 				D0E2F1E82049490900411F1C /* LaunchScreen.storyboard */,
