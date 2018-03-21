@@ -113,7 +113,7 @@ class MemberCell: UICollectionViewCell {
     addSubview(roundedView)
     
     addSubview(name)
-    name.frame = CGRect(x: 0, y: frame.width + 15, width: frame.width, height: 15)
+    name.frame = CGRect(x: 0, y: image.frame.width + 10, width: frame.width, height: 15)
   }
   
   required init?(coder aDecoder: NSCoder) {

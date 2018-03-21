@@ -84,7 +84,7 @@ extension MembersVC {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: (view.frame.width/3) - 20, height: (view.frame.width/3) - 6)
+    return CGSize(width: (view.frame.width/3) - 20, height: (view.frame.width/3) + 10)
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

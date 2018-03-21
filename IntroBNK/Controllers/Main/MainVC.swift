@@ -37,6 +37,7 @@ class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     navigationItem.title = "BNK48"
   }
   
+  // MARK: - Functions
   private func createAndPushCollectionViewPage(with viewController: UICollectionViewController, line spaceing: CGFloat) {
     let layout = UICollectionViewFlowLayout()
     layout.minimumLineSpacing = spaceing
@@ -48,7 +49,7 @@ extension MainVC {
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let layout = UICollectionViewFlowLayout()
     
-    switch indexPath.row {
+    switch indexPath.item {
     case 0:
       createAndPushCollectionViewPage(with: NewsVC(collectionViewLayout: layout), line: 27)
     case 1:
